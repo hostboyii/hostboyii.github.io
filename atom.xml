@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Shmily的博客</title>
+  
+  <subtitle>渗透吧</subtitle>
+  <link href="https://hostboyii.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://hostboyii.github.io/"/>
+  <updated>2022-04-05T09:26:17.653Z</updated>
+  <id>https://hostboyii.github.io/</id>
+  
+  <author>
+    <name>Shmily</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="https://hostboyii.github.io/2021/11/15/guo-yu-yi-ci-xxe-wai-bu-shi-ti-zhu-ru-de-da-ba/"/>
+    <id>https://hostboyii.github.io/2021/11/15/guo-yu-yi-ci-xxe-wai-bu-shi-ti-zhu-ru-de-da-ba/</id>
+    <published>2021-11-15T12:19:36.818Z</published>
+    <updated>2022-04-05T09:26:17.653Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;title: XML的套娃&lt;/p&gt;
+&lt;h3 id=&quot;关于一次XXE外部实体注入的打靶&quot;&gt;&lt;a href=&quot;#关于一次XXE外部实体注入的打靶&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>

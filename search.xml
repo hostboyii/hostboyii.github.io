@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title></title>
+      <link href="/2021/11/15/guo-yu-yi-ci-xxe-wai-bu-shi-ti-zhu-ru-de-da-ba/"/>
+      <url>/2021/11/15/guo-yu-yi-ci-xxe-wai-bu-shi-ti-zhu-ru-de-da-ba/</url>
+      
+        <content type="html"><![CDATA[<p>title: XML的套娃</p><h3 id="关于一次XXE外部实体注入的打靶"><a href="#关于一次XXE外部实体注入的打靶" class="headerlink" title="关于一次XXE外部实体注入的打靶"></a>关于一次XXE外部实体注入的打靶</h3><p> 话不多说前面的一系列安装操作就不多废话了，但是有一点要注意，如果在kali上无法扫出靶机端口和ip地址，那就要先去配置靶机，网上有教程。</p><p>直接开整 上来 ip a  查看本机的  ；</p><p><img src="https://gitee.com/shmilyii/typora-cloud-library/raw/master/img/20220405171900.png"></p><p>2.然后在对整个C网段进行扫描，寻找出靶机的ip地址，使用namp -sP 192.168.227.0/24,直接发现靶机ip地址192.168.227.131</p><p><img src="https://gitee.com/shmilyii/typora-cloud-library/raw/master/img/20220405171939.png"></p><p>3.既然已经找了靶机的ip，直接对他进行端口扫描nmap -sS 192.168.227.131,发现80端口是开放的，则使用firefox <a href="http://192.168.227.131,进行访问![](https://gitee.com/shmilyii/typora-cloud-library/raw/master/img/20220405171958.png)">http://192.168.227.131,进行访问![](https://gitee.com/shmilyii/typora-cloud-library/raw/master/img/20220405171958.png)</a></p><p><img src="https://gitee.com/shmilyii/typora-cloud-library/raw/master/img/20220405172016.png"></p><p>4.先在就看看有没有什么后台相关目录，直接对改该网站进行目录扫描dirb <a href="http://192.168.227.131,发现了该网站存在robot协议,直接访问robots.txt/">http://192.168.227.131,发现了该网站存在robot协议，直接访问robots.txt</a> 目录</p><p><img src="https://gitee.com/shmilyii/typora-cloud-library/raw/master/img/20220405172156.png"></p><p>5.发现了不得了的事情这个xxe目录看起来感觉就很迷人，就先访问它吧，直接出现一个登陆界面</p><p>6.那就直接bp抓包吧，看看有没有什么xxe漏洞发现什么的。果然发现了不得了的事情，这种格式的不就是存在xxe的象征么，但还是不能非常确定，只是感觉直接越来越近了。</p><p><img src="https://gitee.com/shmilyii/typora-cloud-library/raw/master/img/20220405172215.png"></p><p>7.那就直接改包，注入xxe外部实体注入，看看会不会出现回显</p><p><img src="https://gitee.com/shmilyii/typora-cloud-library/raw/master/img/20220405172230.png"></p><p><img src="https://gitee.com/shmilyii/typora-cloud-library/raw/master/img/20220405172250.png"></p><p><img src="https://gitee.com/shmilyii/typora-cloud-library/raw/master/img/20220405172331.png"></p><p>8.果然不出我所料，出现了一串编码，是base64的加密，直接解密</p><p><img src="https://gitee.com/shmilyii/typora-cloud-library/raw/master/img/20220405172349.png"></p><p><img src="https://gitee.com/shmilyii/typora-cloud-library/raw/master/img/20220405172357.png"></p><p>9.解密后感觉这个代码不是很有用，这个时候，我们就要去爱护之前的admin.php这个目录了，直接对它进行读取，果然里面有账户和MD5加密后的密码，那就不用多说了 直接在线解密得出账户和密码</p><p><img src="https://gitee.com/shmilyii/typora-cloud-library/raw/master/img/20220405172419.png"></p><p><img src="https://gitee.com/shmilyii/typora-cloud-library/raw/master/img/20220405172501.png"></p><p>9.这样的话，还不简单直接访问admin.php目录，登陆就行了。然后出现了flag,啊不会吧这就拿到了，果然不是那么的容易，点击flag后，什么也没有，但是我们又发现了一个新的目录flagmeout.php。</p><p><img src="https://gitee.com/shmilyii/typora-cloud-library/raw/master/img/20220405172515.png"></p><p><img src="https://gitee.com/shmilyii/typora-cloud-library/raw/master/img/20220405172523.png"></p><p>10.那就继续利用xxe外部文件读取，读取它呗，还能怎么办，心里总感觉离我不是很远了，读取后，发现又是一串加密后的字符串，base64解密后，发现这玩意，可真恶心，这不是在无限套娃吗？</p><p>看这个格式有点像base32加密呀，管他的，先试了再说，本以为就要结束了，没想到。。。又是base64，继续呗</p><p><img src="https://gitee.com/shmilyii/typora-cloud-library/raw/master/img/20220405172532.png"></p><p><img src="https://gitee.com/shmilyii/typora-cloud-library/raw/master/img/20220405172539.png"></p><p>11.疯了疯了，又是一个文件，我相信这应该是最后的了吧，直接xxe文件读取呗，最后解码后，是一串不知道是什么东西字符，自己想了想，之前几个破解后，都是php代码执行，拿这个也会不会就是呐</p><p><img src="https://gitee.com/shmilyii/typora-cloud-library/raw/master/img/20220405172549.png"></p><p>12.果然啊，皇天不负有心人，终于出来了，得到了flag….</p><p><img src="https://gitee.com/shmilyii/typora-cloud-library/raw/master/img/20220405172607.png"></p><p>总结：</p><p>这次的打靶实战，其实并不难，掌握xxe漏洞的规则，以及使用，还有就是解密，和仔细，还有就是一定要有耐心，呜呜呜。</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>
