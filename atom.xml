@@ -6,7 +6,7 @@
   <link href="https://hostboyii.github.io/atom.xml" rel="self"/>
   
   <link href="https://hostboyii.github.io/"/>
-  <updated>2022-04-05T12:34:45.669Z</updated>
+  <updated>2022-04-10T03:25:03.517Z</updated>
   <id>https://hostboyii.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="https://hostboyii.github.io/2022/04/10/xml-xxe-wu-hui-xian-dtd-shi-ti-wei-xie-yi-dai-ma-shen-ji/"/>
+    <id>https://hostboyii.github.io/2022/04/10/xml-xxe-wu-hui-xian-dtd-shi-ti-wei-xie-yi-dai-ma-shen-ji/</id>
+    <published>2022-04-10T03:25:19.809Z</published>
+    <updated>2022-04-10T03:25:03.517Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h4 id=&quot;XML-amp-XXE-amp-无回显-amp-DTD实体-amp-伪协议-amp-代码审计&quot;&gt;&lt;a href=&quot;#XML-amp-XXE-amp-无回显-amp-DTD实体-amp-伪协议-amp-代码审计&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title></title>
