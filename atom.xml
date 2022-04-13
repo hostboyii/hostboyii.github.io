@@ -6,7 +6,7 @@
   <link href="https://hostboyii.github.io/atom.xml" rel="self"/>
   
   <link href="https://hostboyii.github.io/"/>
-  <updated>2022-04-10T03:30:43.072Z</updated>
+  <updated>2022-04-13T09:05:53.304Z</updated>
   <id>https://hostboyii.github.io/</id>
   
   <author>
@@ -17,53 +17,92 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
-    <link href="https://hostboyii.github.io/2022/04/10/xml-xxe-wu-hui-xian-dtd-shi-ti-wei-xie-yi-dai-ma-shen-ji/"/>
-    <id>https://hostboyii.github.io/2022/04/10/xml-xxe-wu-hui-xian-dtd-shi-ti-wei-xie-yi-dai-ma-shen-ji/</id>
-    <published>2022-04-10T03:25:19.809Z</published>
-    <updated>2022-04-10T03:30:43.072Z</updated>
+    <title>PHP反序列化&amp;POP链构造&amp;魔术方法&amp;原生类</title>
+    <link href="https://hostboyii.github.io/2022/04/13/php-fan-xu-lie-hua-pop-lian-gou-zao-mo-zhu-fang-fa-yuan-sheng-lei/"/>
+    <id>https://hostboyii.github.io/2022/04/13/php-fan-xu-lie-hua-pop-lian-gou-zao-mo-zhu-fang-fa-yuan-sheng-lei/</id>
+    <published>2022-04-13T07:27:31.000Z</published>
+    <updated>2022-04-13T09:05:53.304Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h4 id=&quot;XML-amp-XXE-amp-无回显-amp-DTD实体-amp-伪协议-amp-代码审计&quot;&gt;&lt;a href=&quot;#XML-amp-XXE-amp-无回显-amp-DTD实体-amp-伪协议-amp-代码审计&quot; class=&quot;headerlink&quot;</summary>
+    <summary type="html">&lt;blockquote&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;PHP反序列化-amp-POP链构造-amp-魔术方法-amp-原生类&quot;&gt;&lt;a href=&quot;#PHP反序列化-amp-POP链构造-amp-魔术方法-amp-原生类&quot; class=&quot;headerlink&quot;</summary>
         
       
     
     
     
+    <category term="渗透" scheme="https://hostboyii.github.io/categories/%E6%B8%97%E9%80%8F/"/>
+    
+    
+    <category term="Shmily" scheme="https://hostboyii.github.io/tags/Shmily/"/>
     
   </entry>
   
   <entry>
-    <title></title>
-    <link href="https://hostboyii.github.io/2022/04/05/log4j2-lou-dong-fu-xian/"/>
-    <id>https://hostboyii.github.io/2022/04/05/log4j2-lou-dong-fu-xian/</id>
-    <published>2022-04-05T12:32:35.058Z</published>
-    <updated>2022-04-05T12:34:45.669Z</updated>
+    <title>log4j2漏洞复现</title>
+    <link href="https://hostboyii.github.io/2022/04/07/log4j2-lou-dong-fu-xian/"/>
+    <id>https://hostboyii.github.io/2022/04/07/log4j2-lou-dong-fu-xian/</id>
+    <published>2022-04-07T01:27:31.000Z</published>
+    <updated>2022-04-13T09:19:23.186Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;log4j2漏洞复现&quot;&gt;&lt;a href=&quot;#log4j2漏洞复现&quot; class=&quot;headerlink&quot; title=&quot;log4j2漏洞复现&quot;&gt;&lt;/a&gt;log4j2漏洞复现&lt;/h1&gt;&lt;p&gt;</summary>
+    <summary type="html">&lt;blockquote&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;log4j2漏洞复现&quot;&gt;&lt;a href=&quot;#log4j2漏洞复现&quot; class=&quot;headerlink&quot; title=&quot;log4j2漏洞复现&quot;&gt;&lt;/a&gt;log4j2漏洞复现&lt;/h1&gt;&lt;p&gt;</summary>
         
       
     
     
     
+    <category term="渗透" scheme="https://hostboyii.github.io/categories/%E6%B8%97%E9%80%8F/"/>
+    
+    
+    <category term="Shmily" scheme="https://hostboyii.github.io/tags/Shmily/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>XML&amp;XXE&amp;无回显&amp;DTD实体&amp;伪协议&amp;代码审计</title>
+    <link href="https://hostboyii.github.io/2022/04/05/xml-xxe-wu-hui-xian-dtd-shi-ti-wei-xie-yi-dai-ma-shen-ji/"/>
+    <id>https://hostboyii.github.io/2022/04/05/xml-xxe-wu-hui-xian-dtd-shi-ti-wei-xie-yi-dai-ma-shen-ji/</id>
+    <published>2022-04-05T01:27:31.000Z</published>
+    <updated>2022-04-13T09:19:22.681Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&quot;XML-amp-XXE-amp-无回显-amp-DTD实体-amp-伪协议-amp-代码审计&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="渗透" scheme="https://hostboyii.github.io/categories/%E6%B8%97%E9%80%8F/"/>
+    
+    
+    <category term="Shmily" scheme="https://hostboyii.github.io/tags/Shmily/"/>
     
   </entry>
   
   <entry>
     <title>应用协议&amp;Rsync&amp;SSH&amp;RDP&amp;FTP&amp;漏洞批扫&amp;口令猜解</title>
-    <link href="https://hostboyii.github.io/2020/01/14/ying-yong-xie-yi-rsync-ssh-rdp-ftp-lou-dong-pi-sao-kou-ling-cai-jie/"/>
-    <id>https://hostboyii.github.io/2020/01/14/ying-yong-xie-yi-rsync-ssh-rdp-ftp-lou-dong-pi-sao-kou-ling-cai-jie/</id>
-    <published>2020-01-14T07:27:31.000Z</published>
-    <updated>2022-04-11T12:56:18.668Z</updated>
+    <link href="https://hostboyii.github.io/2022/03/14/ying-yong-xie-yi-rsync-ssh-rdp-ftp-lou-dong-pi-sao-kou-ling-cai-jie/"/>
+    <id>https://hostboyii.github.io/2022/03/14/ying-yong-xie-yi-rsync-ssh-rdp-ftp-lou-dong-pi-sao-kou-ling-cai-jie/</id>
+    <published>2022-03-14T07:27:31.000Z</published>
+    <updated>2022-04-13T09:07:25.378Z</updated>
     
     
       
@@ -87,10 +126,10 @@
   
   <entry>
     <title>服务攻防——数据库类型安全</title>
-    <link href="https://hostboyii.github.io/2020/01/14/fu-wu-gong-fang-shu-ju-ku-lei-xing-an-quan/"/>
-    <id>https://hostboyii.github.io/2020/01/14/fu-wu-gong-fang-shu-ju-ku-lei-xing-an-quan/</id>
-    <published>2020-01-14T07:27:31.000Z</published>
-    <updated>2022-04-11T13:04:11.234Z</updated>
+    <link href="https://hostboyii.github.io/2022/03/04/fu-wu-gong-fang-shu-ju-ku-lei-xing-an-quan/"/>
+    <id>https://hostboyii.github.io/2022/03/04/fu-wu-gong-fang-shu-ju-ku-lei-xing-an-quan/</id>
+    <published>2022-03-04T10:27:33.000Z</published>
+    <updated>2022-04-13T09:07:46.159Z</updated>
     
     
       
