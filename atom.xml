@@ -6,7 +6,7 @@
   <link href="https://hostboyii.github.io/atom.xml" rel="self"/>
   
   <link href="https://hostboyii.github.io/"/>
-  <updated>2022-04-13T09:05:53.304Z</updated>
+  <updated>2022-04-16T13:39:35.195Z</updated>
   <id>https://hostboyii.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>中间件安全&amp;CVE复现&amp;IIS&amp;Apache&amp;Tomcat&amp;Nginx</title>
+    <link href="https://hostboyii.github.io/2022/04/16/zhong-jian-jian-an-quan-cve-fu-xian-iis-apache-tomcat-nginx/"/>
+    <id>https://hostboyii.github.io/2022/04/16/zhong-jian-jian-an-quan-cve-fu-xian-iis-apache-tomcat-nginx/</id>
+    <published>2022-04-16T13:39:31.000Z</published>
+    <updated>2022-04-16T13:39:35.195Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;中间件安全-amp-CVE复现-amp-IIS-amp-Apache-amp-Tomcat-amp-Nginx&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="渗透" scheme="https://hostboyii.github.io/categories/%E6%B8%97%E9%80%8F/"/>
+    
+    
+    <category term="Shmily" scheme="https://hostboyii.github.io/tags/Shmily/"/>
+    
+  </entry>
   
   <entry>
     <title>PHP反序列化&amp;POP链构造&amp;魔术方法&amp;原生类</title>

