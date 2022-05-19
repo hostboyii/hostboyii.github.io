@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Cors,jsonp回调，子域名接管</title>
+      <link href="/2022/05/16/cors-jsonp-hui-diao-zi-yu-ming-jie-guan/"/>
+      <url>/2022/05/16/cors-jsonp-hui-diao-zi-yu-ming-jie-guan/</url>
+      
+        <content type="html"><![CDATA[<blockquote></blockquote><ul><li><p>CORS 跨域资源共享</p><p>用户A在登录自己的后台或什么页面，这个时候访问了第三方的页面</p><p>第三方页面去请求这个后台或页面的内容，用户A访问了页面即将页面的内容泄露了</p><p>只做资源共享</p><p>而csrf可以操作添加用户等操作</p><p>找这类漏洞就是找设置问题  如果黑盒：就是Origin这个值是否设置后能通过资源</p><p>Access-Control-Allow-Origin:*（网页地址）</p><p>表示其他页面能获取此页面的资源</p><p>JSONP 跨域回调 （callback）</p><p>大型网站 同源策略 有没有？ 有！</p><p>看数据包里面那些有回调  再在回调里面的敏感信息并获取</p><p>用户A浏览器访问过huya youku taobao jd 这种页面</p><p>对于官方来讲： 来源是攻击者的网站  不合法 同源策略防护阻止</p><p>回调第三方：官方认同的合法的 从哪里触发都可以了</p><p>攻击者：尝试去测试这些官方的回调页面（解决同源策略的安全问题）（不直接去请求带有敏感信息的页面）在自己搭建的网站上面去触发代码，只要用户A访问了网页，相当于就触发了回调，解决了同源策略防护问题从未得到了回调页面涉及到的用户A的数据</p><p>子域名接管</p><p>如：test.baidu.com  cname   test.xxxx.com（CNAME的设置）</p><p>如果这个时候test.xxxx.com 过期或失效等</p><p>我们是不是可以注册这个域名 实现对test.baidu.com控制</p><p>dnsub子域名的爬行工具 可以分析cname的指向值</p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> WEB探测 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Shmily </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>框架安全&amp;CVE复现&amp;Spring&amp;Struts&amp;Laravel&amp;ThinkPHP</title>
       <link href="/2022/04/23/kuang-jia-an-quan-cve-fu-xian-spring-struts-laravel-thinkphp/"/>
       <url>/2022/04/23/kuang-jia-an-quan-cve-fu-xian-spring-struts-laravel-thinkphp/</url>
