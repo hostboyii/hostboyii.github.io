@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>APP攻防-Frida反证书抓包&amp;移动安全系统&amp;资产提取&amp;评估扫描Xposed&amp;Frida&amp;Hook&amp;证书校验&amp;反代理&amp;代理转发</title>
+      <link href="/2022/05/18/app-gong-fang-frida-fan-zheng-shu-zhua-bao-yi-dong-an-quan-xi-tong-zi-chan-ti-qu-ping-gu-sao-miao-xposed-frida-hook-zheng-shu-xiao-yan-fan-dai-li-dai-li-zhuan-fa/"/>
+      <url>/2022/05/18/app-gong-fang-frida-fan-zheng-shu-zhua-bao-yi-dong-an-quan-xi-tong-zi-chan-ti-qu-ping-gu-sao-miao-xposed-frida-hook-zheng-shu-xiao-yan-fan-dai-li-dai-li-zhuan-fa/</url>
+      
+        <content type="html"><![CDATA[<blockquote></blockquote><ul><li><p>APP攻防-Frida反证书抓包&amp;移动安全系统&amp;资产提取&amp;评估扫描Xposed&amp;Frida&amp;Hook&amp;证书校验&amp;反代理&amp;代理转发</p><hr><hr><h3 id="内在-资产提取-AppinfoScanner"><a href="#内在-资产提取-AppinfoScanner" class="headerlink" title="内在-资产提取-AppinfoScanner"></a>内在-资产提取-AppinfoScanner</h3><p>AppinfoScanner一款适用于以HW行动/红队/渗透测试团队为场景的移动端(Android、iOS、WEB、H5、静态网站)信息收集扫描工具，可以帮助渗透测试工程师、攻击队成员、红队成员快速收集到移动端或者静态WEB站点中关键的资产信息并提供基本的信息输出,如：Title、Domain、CDN、指纹信息、状态信息等。</p><p><a href="https://github.com/kelvinBen/AppInfoScanner">https://github.com/kelvinBen/AppInfoScanner</a></p><h3 id="内在-安全评估-MobSF-amp-mobexler"><a href="#内在-安全评估-MobSF-amp-mobexler" class="headerlink" title="内在-安全评估-MobSF&amp;mobexler"></a>内在-安全评估-MobSF&amp;mobexler</h3><p>-移动安全框架 (MobSF) 是一种自动化的一体化移动应用程序 (Android/iOS/Windows) 渗透测试、恶意软件分析和安全评估框架，能够执行静态和动态分析。MobSF 支持移动应用程序二进制文件（APK、XAPK、IPA 和 APPX）以及压缩源代码，并提供 REST API 以与您的 CI/CD 或 DevSecOps 管道无缝集成。动态分析器可帮助您执行运行时安全评估和交互式仪器测试。</p><p>-Mobexler是基于Elementary OS的定制虚拟机，旨在帮助进行Android和iOS应用程序的渗透测试。Mobexler预装了各种开源工具，脚本，黑客必备软件等，这些都是安全测试Android和iOS应用程序所必需的。</p><pre><code>https://mobexler.com/https://github.com/MobSF/Mobile-Security-Framework-MobSF直接执行下面两个命令即可docker pull opensecurity/mobile-security-framework-mobsfdocker run -it -p 8008:8000 opensecurity/mobile-security-framework-mobsf:latest</code></pre><h3 id="外在-证书抓包-frida-server-amp-r0capture"><a href="#外在-证书抓包-frida-server-amp-r0capture" class="headerlink" title="外在-证书抓包-frida-server&amp;r0capture"></a>外在-证书抓包-frida-server&amp;r0capture</h3><p>-r0capture仅限安卓平台，测试安卓7、8、9、10、11 可用 ；</p><p>无视所有证书校验或绑定，不用考虑任何证书的事情；</p><p>通杀TCP/IP四层模型中的应用层中的全部协议；</p><p>通杀协议包括：Http,WebSocket,Ftp,Xmpp,Imap,Smtp,Protobuf等、及它们的SSL版本；</p><p>通杀所有应用层框架，包括HttpUrlConnection、Okhttp1/3/4、Retrofit/Volley等等；</p><p>无视加固，不管是整体壳还是二代壳或VMP，不用考虑加固的事情；</p><p>-Firda 是一款易用的跨平 Hook 工具， Java 层到 Native 层的 Hook 无所不能，是一种 动态 的插桩工具，可以插入代码到原生 App 的内存空间中，动态的去监视和修改行为，原生平台包括 Win、Mac、Linux、Android、iOS 全平台。</p><p>测试环境：</p><p>Windows10  Python3.7 夜神模拟器 r0capture frida-server wireshark</p><pre><code>https://github.com/r0ysue/r0capturehttps://github.com/frida/frida/releases1、本地安装Fridapip install fridapip install firda-tools2、模拟器安装Frida注意：版本要与本地Frida一致下载：https://github.com/frida/frida/releases真机：ARM版本及位数 模拟器：无ARM的位数getprop ro.product.cpu.abiadb push frida-server /data/localcd /data/local/tmp/chmod 777 frida-server./frida-serverps | grep frida3、转发并启动Fridaadb forward tcp:27042 tcp:27042连接判断：frida-ps -U frida-ps -R4、获取包名并运行抓包获取包名：ls /data/data 或 Apk Messengerpython r0capture.py -U -f 包名 -p xxxx.pcap</code></pre><h3 id="APP抓包的两种情况："><a href="#APP抓包的两种情况：" class="headerlink" title="APP抓包的两种情况："></a>APP抓包的两种情况：</h3><p>一.抓的到包：当然就不用多说了，直接上手干就完事</p><p>二.抓不到包：1.没走http/https协议-其他协议全局抓包</p><p>​                          2.反代理或证书校验的检测 防抓包的机制</p><p>frida抓包流程：</p><p>模拟器去安装frida-server</p><p>本地也安装friad-tools</p><p>模拟器去启动feida-server</p><p>本地去连接frida</p><p>脚本抓包-解决证书</p><h4 id="开了http代理app不能正运行"><a href="#开了http代理app不能正运行" class="headerlink" title="开了http代理app不能正运行"></a>开了http代理app不能正运行</h4><p>1.反代理机制</p><p>2.证书问题</p><p>数据走ssl https:</p><p>情况1，客户端不存在证书校验，服务器也不存在证书校验。</p><p>情况2，客户端存在校验服务端证书，服务器也不存在证书校验，单项校验。</p><p>情况3、客户端存在证书校验，服务器也存在证书校验，双向校验。</p><p>转发机制：</p><p>proxifier</p><p>如果设置系统代理</p><p>APP检测到设置了代理，GG</p><p>相当于在模拟器或手机设置代理</p><p>app-&gt;代理服务器-burp-服务端</p><p>借助网络接口出口数据：</p><p>不需要设置代理</p><p>相当于在网络出口设代理</p><p>app-&gt;（已经逃离了模拟器或手机）proxifier-&gt;本地brup-服务端</p><p>app模拟器 模拟器的网络出口数据是通过本机进行的</p><p>抓app包出现的情况： 先检查代理，在</p><p>1.单纯开上模拟器的代理后打不开，没有出现数据包的情况</p><p>2.用到proxfier转发转发后也打不开，但是出现了数据包的情况 反证书</p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 移动安全 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hacker </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Cors,jsonp回调，子域名接管</title>
       <link href="/2022/05/16/cors-jsonp-hui-diao-zi-yu-ming-jie-guan/"/>
       <url>/2022/05/16/cors-jsonp-hui-diao-zi-yu-ming-jie-guan/</url>
@@ -21,6 +46,31 @@
         <tags>
             
             <tag> Shmily </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>APP攻防-微信小程序&amp;解包反编译&amp;数据抓包&amp;APK信息资源提取</title>
+      <link href="/2022/05/10/app-gong-fang-wei-xin-xiao-cheng-xu-jie-bao-fan-bian-yi-shu-ju-zhua-bao-apk-xin-xi-zi-yuan-ti-qu/"/>
+      <url>/2022/05/10/app-gong-fang-wei-xin-xiao-cheng-xu-jie-bao-fan-bian-yi-shu-ju-zhua-bao-apk-xin-xi-zi-yuan-ti-qu/</url>
+      
+        <content type="html"><![CDATA[<blockquote></blockquote><ul><li><p>APP攻防-微信小程序&amp;解包反编译&amp;数据抓包&amp;APK信息资源提取</p><hr><p>1、渗透角度：测试的app提供服务的服务器，网站，接口等，一旦这个有安全问题，被不法分子利用，相当于APP正常服务就会受到直接的影响！</p><p>APK-白盒-Java代码审计</p><p>APK-黑盒-资产&amp;WEB&amp;IP&amp;接口等</p><p>小程序-白盒-Node.JS代码审计</p><p>小程序-黑盒-资产&amp;WEB&amp;IP&amp;接口等</p><p>2、开发角度：测试的app里代码的设计安全，采用没加密的发送数据，采用权限过高的设置导致攻击者利用app获取到手机的敏感信息等。</p><p>弱加密，逻辑安全，授权，中间人等</p><h4 id="微信小程序-真机-amp-模拟器数据抓包"><a href="#微信小程序-真机-amp-模拟器数据抓包" class="headerlink" title="微信小程序-真机&amp;模拟器数据抓包"></a>微信小程序-真机&amp;模拟器数据抓包</h4><p>安卓系统抓包（微信小程序）：</p><p>1、安卓系统7.0以下版本，不管微信任意版本，都会信任系统提供的证书</p><p>2、安卓系统7.0以上版本，微信7.0以下版本，微信会信任系统提供的证书</p><p>3、安卓系统7.0以上版本，微信7.0以上版本，微信只信任它自己配置的证书列表</p><p>基于上述我们解决的方式如下：</p><p>1、将证书安装到系统证书中（需要root）</p><p>2、苹果手机（苹果手机不受此影响）</p><p>3、采用安卓系统低于7.0的模拟器</p><p>4、使用低版本电脑版微信小程序抓包</p><p>如果真机IPhone-IOS系统微信小程序抓包</p><p>条件：抓包本机需要和Iphone手机处于同一WIFI下</p><p>Iphone配置wifi的代理，代理设置地址写本地抓包的工具地址和端口</p><h4 id="微信小程序-PC-amp-模拟器分包反编译"><a href="#微信小程序-PC-amp-模拟器分包反编译" class="headerlink" title="微信小程序-PC&amp;模拟器分包反编译"></a>微信小程序-PC&amp;模拟器分包反编译</h4><p>1、高富帅版：</p><p>欢迎使用多功能小程序助手工具，点击确定开始使用。</p><p>免责声明：不得将小程序反编译源码程序和反编译图片素材挪作商业或盈利用</p><p>使用教程地：<a href="https://www.kancloud.cn/ludeqi/xcxzs/2607637">https://www.kancloud.cn/ludeqi/xcxzs/2607637</a></p><p>最新版下载地址：<a href="https://xcx.siqingw.top/xcx.zip">https://xcx.siqingw.top/xcx.zip</a></p><p>2、穷屌丝版：</p><p><a href="https://github.com/sanriqing/WxAppUnpacker">https://github.com/sanriqing/WxAppUnpacker</a></p><p>-安装node.js</p><p><a href="http://nodejs.cn/download/">http://nodejs.cn/download/</a></p><p>-安装依赖：</p><p>npm install</p><p>-部分wxapkg还需要解密</p><p>-模拟器取出wxapkg文件：</p><p>/data/data/com.tencent.mm/MicroMsg/xxxxxx/appbrand/pkg</p><p>-反编译解包 </p><p>node wuWxapkg.js -s=../ xxxx.wxapkg</p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 移动安全 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hacker </tag>
             
         </tags>
       

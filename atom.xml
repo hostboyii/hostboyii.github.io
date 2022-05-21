@@ -6,7 +6,7 @@
   <link href="https://hostboyii.github.io/atom.xml" rel="self"/>
   
   <link href="https://hostboyii.github.io/"/>
-  <updated>2022-05-18T08:17:15.226Z</updated>
+  <updated>2022-05-21T04:29:37.136Z</updated>
   <id>https://hostboyii.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>APP攻防-Frida反证书抓包&amp;移动安全系统&amp;资产提取&amp;评估扫描Xposed&amp;Frida&amp;Hook&amp;证书校验&amp;反代理&amp;代理转发</title>
+    <link href="https://hostboyii.github.io/2022/05/18/app-gong-fang-frida-fan-zheng-shu-zhua-bao-yi-dong-an-quan-xi-tong-zi-chan-ti-qu-ping-gu-sao-miao-xposed-frida-hook-zheng-shu-xiao-yan-fan-dai-li-dai-li-zhuan-fa/"/>
+    <id>https://hostboyii.github.io/2022/05/18/app-gong-fang-frida-fan-zheng-shu-zhua-bao-yi-dong-an-quan-xi-tong-zi-chan-ti-qu-ping-gu-sao-miao-xposed-frida-hook-zheng-shu-xiao-yan-fan-dai-li-dai-li-zhuan-fa/</id>
+    <published>2022-05-18T14:11:59.000Z</published>
+    <updated>2022-05-21T04:29:37.136Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;APP攻防-Frida反证书抓包&amp;amp;移动安全系统&amp;amp;资产提取&amp;amp;评估扫描Xposed&amp;amp;Frida&amp;amp;Hook&amp;amp;证书校验&amp;amp;反代理&amp;amp;代理转发&lt;/p&gt;
+</summary>
+        
+      
+    
+    
+    
+    <category term="移动安全" scheme="https://hostboyii.github.io/categories/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/"/>
+    
+    
+    <category term="Hacker" scheme="https://hostboyii.github.io/tags/Hacker/"/>
+    
+  </entry>
   
   <entry>
     <title>Cors,jsonp回调，子域名接管</title>
@@ -41,6 +70,36 @@
     
     
     <category term="Shmily" scheme="https://hostboyii.github.io/tags/Shmily/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>APP攻防-微信小程序&amp;解包反编译&amp;数据抓包&amp;APK信息资源提取</title>
+    <link href="https://hostboyii.github.io/2022/05/10/app-gong-fang-wei-xin-xiao-cheng-xu-jie-bao-fan-bian-yi-shu-ju-zhua-bao-apk-xin-xi-zi-yuan-ti-qu/"/>
+    <id>https://hostboyii.github.io/2022/05/10/app-gong-fang-wei-xin-xiao-cheng-xu-jie-bao-fan-bian-yi-shu-ju-zhua-bao-apk-xin-xi-zi-yuan-ti-qu/</id>
+    <published>2022-05-10T13:11:31.000Z</published>
+    <updated>2022-05-21T04:27:25.991Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;APP攻防-微信小程序&amp;amp;解包反编译&amp;amp;数据抓包&amp;amp;APK信息资源提取&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;1、渗透角度：测试的app提供服务的服务器，网站，接口等，一旦这个有安全问题，被不法分子</summary>
+        
+      
+    
+    
+    
+    <category term="移动安全" scheme="https://hostboyii.github.io/categories/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/"/>
+    
+    
+    <category term="Hacker" scheme="https://hostboyii.github.io/tags/Hacker/"/>
     
   </entry>
   
