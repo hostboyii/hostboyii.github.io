@@ -6,7 +6,7 @@
   <link href="https://hostboyii.github.io/atom.xml" rel="self"/>
   
   <link href="https://hostboyii.github.io/"/>
-  <updated>2022-08-17T07:42:23.630Z</updated>
+  <updated>2022-08-18T07:59:24.747Z</updated>
   <id>https://hostboyii.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CNVD证书-----代码审计PHP反序列化漏洞</title>
+    <link href="https://hostboyii.github.io/2022/08/18/cnvd-zheng-shu-dai-ma-shen-ji-php-fan-xu-lie-hua-lou-dong/"/>
+    <id>https://hostboyii.github.io/2022/08/18/cnvd-zheng-shu-dai-ma-shen-ji-php-fan-xu-lie-hua-lou-dong/</id>
+    <published>2022-08-18T02:11:59.000Z</published>
+    <updated>2022-08-18T07:59:24.747Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;CNVD证书—–代码审计PHP反序列化漏洞&quot;&gt;&lt;a href=&quot;#CNVD证书—–代码审计PHP反序列化漏洞&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="代码审计" scheme="https://hostboyii.github.io/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    
+    <category term="代码审计" scheme="https://hostboyii.github.io/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>Python免杀思路技巧-----打包器的免杀（逆向加密方式），分离</title>
@@ -208,36 +233,6 @@
   </entry>
   
   <entry>
-    <title>框架安全&amp;CVE复现&amp;Django&amp;Flask&amp;Node.JS&amp;JQuery</title>
-    <link href="https://hostboyii.github.io/2022/04/23/kuang-jia-an-quan-cve-fu-xian-django-flask-node.js-jquery/"/>
-    <id>https://hostboyii.github.io/2022/04/23/kuang-jia-an-quan-cve-fu-xian-django-flask-node.js-jquery/</id>
-    <published>2022-04-23T13:11:31.000Z</published>
-    <updated>2022-04-26T08:38:17.650Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;框架安全&amp;amp;CVE复现&amp;amp;Django&amp;amp;Flask&amp;amp;Node.JS&amp;amp;JQuery&lt;/p&gt;
-&lt;hr&gt;
-&lt;h5</summary>
-        
-      
-    
-    
-    
-    <category term="框架安全" scheme="https://hostboyii.github.io/categories/%E6%A1%86%E6%9E%B6%E5%AE%89%E5%85%A8/"/>
-    
-    
-    <category term="Shmily" scheme="https://hostboyii.github.io/tags/Shmily/"/>
-    
-  </entry>
-  
-  <entry>
     <title>框架安全&amp;CVE复现&amp;Apache Shiro&amp;Apache Solr</title>
     <link href="https://hostboyii.github.io/2022/04/23/kuang-jia-an-quan-cve-fu-xian-apache-shiro-apache-solr/"/>
     <id>https://hostboyii.github.io/2022/04/23/kuang-jia-an-quan-cve-fu-xian-apache-shiro-apache-solr/</id>
@@ -255,6 +250,36 @@
 &lt;li&gt;&lt;p&gt;框架安全&amp;amp;CVE复现&amp;amp;Apache Shiro&amp;amp;Apache Solr&lt;/p&gt;
 &lt;hr&gt;
 &lt;h4 id=&quot;Apache-Shiro：&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="框架安全" scheme="https://hostboyii.github.io/categories/%E6%A1%86%E6%9E%B6%E5%AE%89%E5%85%A8/"/>
+    
+    
+    <category term="Shmily" scheme="https://hostboyii.github.io/tags/Shmily/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>框架安全&amp;CVE复现&amp;Django&amp;Flask&amp;Node.JS&amp;JQuery</title>
+    <link href="https://hostboyii.github.io/2022/04/23/kuang-jia-an-quan-cve-fu-xian-django-flask-node.js-jquery/"/>
+    <id>https://hostboyii.github.io/2022/04/23/kuang-jia-an-quan-cve-fu-xian-django-flask-node.js-jquery/</id>
+    <published>2022-04-23T13:11:31.000Z</published>
+    <updated>2022-04-26T08:38:17.650Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;框架安全&amp;amp;CVE复现&amp;amp;Django&amp;amp;Flask&amp;amp;Node.JS&amp;amp;JQuery&lt;/p&gt;
+&lt;hr&gt;
+&lt;h5</summary>
         
       
     
